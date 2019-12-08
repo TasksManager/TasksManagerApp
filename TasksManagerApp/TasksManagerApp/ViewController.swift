@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  TasksManagerApp
 //
-//  Created by Mikhail Semerikov on 06.12.2019.
-//  Copyright © 2019 Mikhail Semerikov. All rights reserved.
+//  Created by maxim on 07.12.2019.
+//  Copyright © 2019 maxim. All rights reserved.
 //
 
 import UIKit
