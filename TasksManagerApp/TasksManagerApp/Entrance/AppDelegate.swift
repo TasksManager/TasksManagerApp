@@ -12,16 +12,15 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var coordinator: AppCoordinator?
     var window: UIWindow?
     
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        self.window = self.window ?? UIWindow()
-        let rootViewController = ViewController()
-        self.window?.rootViewController = rootViewController
-        self.window?.makeKeyAndVisible()
+        coordinator = AppCoordinator(self.window ?? UIWindow())
+        coordinator?.start()
         
         return true
     }
