@@ -11,14 +11,14 @@ import UIKit
 class AnalyticView: UIViewController {
     // MARK: - Dependency
     
-    let presenter: AnaliticViewOutput
+    let presenter: AnalyticViewOutput
     
     // MARK: - Constants
     // MARK: - Public properties
     // MARK: - Private properties
     // MARK: - Init
     
-    init(presenter: AnaliticViewOutput) {
+    init(presenter: AnalyticViewOutput) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
         
@@ -33,8 +33,6 @@ class AnalyticView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // FIXME: - Убрать!
-        presenter.setBackground()
         
     }
     
@@ -47,4 +45,4 @@ class AnalyticView: UIViewController {
 
 // MARK: - AnaliticViewInput
 
-extension AnalyticView: AnaliticViewInput {}
+extension AnalyticView: AnalyticViewInput {}

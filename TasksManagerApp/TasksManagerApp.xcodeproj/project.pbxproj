@@ -15,9 +15,9 @@
 		94210C0D239E20B500A64061 /* ProjectFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C0C239E20B500A64061 /* ProjectFormView.swift */; };
 		94210C0F239E20F300A64061 /* TaskFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C0E239E20F300A64061 /* TaskFormView.swift */; };
 		94210C11239E228200A64061 /* ViewsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C10239E228200A64061 /* ViewsFactory.swift */; };
-		94210C13239E231600A64061 /* AnaliticViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C12239E231600A64061 /* AnaliticViewInput.swift */; };
-		94210C15239E271F00A64061 /* AnaliticPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C14239E271F00A64061 /* AnaliticPresenter.swift */; };
-		94210C17239E27D800A64061 /* AnaliticViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C16239E27D800A64061 /* AnaliticViewOutput.swift */; };
+		94210C13239E231600A64061 /* AnalyticViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C12239E231600A64061 /* AnalyticViewInput.swift */; };
+		94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */; };
+		94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */; };
 		94EEEFB3239CB3B6000D077C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFB2239CB3B6000D077C /* AppDelegate.swift */; };
 		94EEEFB8239CB3CF000D077C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFB7239CB3CF000D077C /* CoreDataManager.swift */; };
 		94EEEFBB239CB416000D077C /* TasksManagerApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFB9239CB416000D077C /* TasksManagerApp.xcdatamodeld */; };
@@ -39,9 +39,9 @@
 		94210C0C239E20B500A64061 /* ProjectFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFormView.swift; sourceTree = "<group>"; };
 		94210C0E239E20F300A64061 /* TaskFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormView.swift; sourceTree = "<group>"; };
 		94210C10239E228200A64061 /* ViewsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsFactory.swift; sourceTree = "<group>"; };
-		94210C12239E231600A64061 /* AnaliticViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnaliticViewInput.swift; sourceTree = "<group>"; };
-		94210C14239E271F00A64061 /* AnaliticPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnaliticPresenter.swift; sourceTree = "<group>"; };
-		94210C16239E27D800A64061 /* AnaliticViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnaliticViewOutput.swift; sourceTree = "<group>"; };
+		94210C12239E231600A64061 /* AnalyticViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewInput.swift; sourceTree = "<group>"; };
+		94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticPresenter.swift; sourceTree = "<group>"; };
+		94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewOutput.swift; sourceTree = "<group>"; };
 		94EEEFB2239CB3B6000D077C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94EEEFB7239CB3CF000D077C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		94EEEFBA239CB416000D077C /* TasksManagerApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TasksManagerApp.xcdatamodel; sourceTree = "<group>"; };
@@ -86,13 +86,13 @@
 			path = Environments;
 			sourceTree = "<group>";
 		};
-		94EEEFBD239CB5B5000D077C /* Resourses */ = {
+		94EEEFBD239CB5B5000D077C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				C4E13D1A239A5543003C3246 /* Assets.xcassets */,
 				C4E13D1C239A5543003C3246 /* LaunchScreen.storyboard */,
 			);
-			path = Resourses;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		94EEEFC4239D00A2000D077C /* Modules */ = {
@@ -208,8 +208,8 @@
 		94EEEFE1239D6EBC000D077C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				94210C12239E231600A64061 /* AnaliticViewInput.swift */,
-				94210C14239E271F00A64061 /* AnaliticPresenter.swift */,
+				94210C12239E231600A64061 /* AnalyticViewInput.swift */,
+				94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -217,8 +217,8 @@
 		94EEEFE2239D6EC7000D077C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				94210C16239E27D800A64061 /* AnaliticViewOutput.swift */,
 				94210C06239E201500A64061 /* AnalyticView.swift */,
+				94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 				94EEEFEB239D713D000D077C /* Entrance */,
 				94EEEFC4239D00A2000D077C /* Modules */,
 				94EEEFB6239CB3CF000D077C /* Core */,
-				94EEEFBD239CB5B5000D077C /* Resourses */,
+				94EEEFBD239CB5B5000D077C /* Resources */,
 				94EEEFBC239CB58F000D077C /* Environments */,
 			);
 			path = TasksManagerApp;
@@ -439,22 +439,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				94EEEFD0239D061E000D077C /* BaseCoordinator.swift in Sources */,
-				94210C17239E27D800A64061 /* AnaliticViewOutput.swift in Sources */,
 				94EEEFB8239CB3CF000D077C /* CoreDataManager.swift in Sources */,
 				94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */,
 				94210C11239E228200A64061 /* ViewsFactory.swift in Sources */,
 				94EEF006239D9591000D077C /* AnalyticCoordinator.swift in Sources */,
 				94EEEFF6239D7D61000D077C /* MainTabBarCoordinator.swift in Sources */,
+				94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */,
 				94210C0B239E208E00A64061 /* TasksView.swift in Sources */,
 				94EEEFC3239CFCEA000D077C /* MainTabBarController.swift in Sources */,
 				94EEEFBB239CB416000D077C /* TasksManagerApp.xcdatamodeld in Sources */,
 				94210C03239E166900A64061 /* TasksCoordinator.swift in Sources */,
 				94210C0D239E20B500A64061 /* ProjectFormView.swift in Sources */,
 				94210C0F239E20F300A64061 /* TaskFormView.swift in Sources */,
+				94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */,
 				94EEEFED239D7194000D077C /* AppCoordinator.swift in Sources */,
-				94210C15239E271F00A64061 /* AnaliticPresenter.swift in Sources */,
 				94210C07239E201500A64061 /* AnalyticView.swift in Sources */,
-				94210C13239E231600A64061 /* AnaliticViewInput.swift in Sources */,
+				94210C13239E231600A64061 /* AnalyticViewInput.swift in Sources */,
 				94EEEFB3239CB3B6000D077C /* AppDelegate.swift in Sources */,
 				94210C09239E205F00A64061 /* ProjectsView.swift in Sources */,
 			);

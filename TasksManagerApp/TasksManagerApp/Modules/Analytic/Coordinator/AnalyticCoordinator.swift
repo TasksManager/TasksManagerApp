@@ -28,7 +28,7 @@ class AnalyticCoordinator: BaseCoordinator {
     
     // MARK: - Private methods
     
-    private func showAnaliticModule() {
+    private func showAnalyticModule() {
         
     }
 

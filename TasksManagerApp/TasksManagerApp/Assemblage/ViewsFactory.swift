@@ -51,7 +51,7 @@ struct ViewsFactory {
     }
     
     func createAnaliticView() -> AnalyticView {
-        let presenter = AnaliticPresenter()
+        let presenter = AnalyticPresenter()
         let analyticController = AnalyticView(presenter: presenter)
         presenter.viewInput = analyticController
         analyticController.tabBarItem = UITabBarItem(

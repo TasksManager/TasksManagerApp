@@ -1,18 +1,18 @@
 //
-//  AnaliticPresenter.swift
+//  AnalyticPresenter.swift
 //  TasksManagerApp
 //
-//  Created by maxim on 09.12.2019.
+//  Created by maxim on 11.12.2019.
 //  Copyright © 2019 Mikhail Semerikov. All rights reserved.
 //
 
 import UIKit
 
-final class AnaliticPresenter {
+final class AnalyticPresenter {
     
     // MARK: - Dependency
     
-    weak var viewInput: (UIViewController & AnaliticViewInput)?
+    weak var viewInput: (UIViewController & AnalyticViewInput)?
     
     // MARK: - Constants
     // MARK: - Public properties
@@ -24,14 +24,11 @@ final class AnaliticPresenter {
     // MARK: - IBActions
     // MARK: - Buttons methods
     // MARK: - Navigation
-
+    
 }
 
 // MARK: - AnaliticViewOotput
 
-extension AnaliticPresenter: AnaliticViewOutput {
-    // FIXME: - Убрать!
-    func setBackground() {
-        viewInput?.view.backgroundColor = .green
-    }
+extension AnalyticPresenter: AnalyticViewOutput {
+   
 }
