@@ -16,10 +16,20 @@
 		94210C0F239E20F300A64061 /* TaskFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C0E239E20F300A64061 /* TaskFormView.swift */; };
 		94210C11239E228200A64061 /* ViewsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C10239E228200A64061 /* ViewsFactory.swift */; };
 		94210C13239E231600A64061 /* AnalyticViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C12239E231600A64061 /* AnalyticViewInput.swift */; };
+		9423AD1323A1E18D00E27AFA /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD1223A1E18D00E27AFA /* TaskModel.swift */; };
+		9423AD1523A1E2B800E27AFA /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD1423A1E2B800E27AFA /* ProjectModel.swift */; };
+		9423AD1B23A1E40900E27AFA /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD1723A1E40900E27AFA /* Project+CoreDataClass.swift */; };
+		9423AD1C23A1E40900E27AFA /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD1823A1E40900E27AFA /* Project+CoreDataProperties.swift */; };
+		9423AD1D23A1E40900E27AFA /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD1923A1E40900E27AFA /* Task+CoreDataClass.swift */; };
+		9423AD1E23A1E40900E27AFA /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD1A23A1E40900E27AFA /* Task+CoreDataProperties.swift */; };
+		9423AD2123A1E94600E27AFA /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD2023A1E94600E27AFA /* DataBaseManager.swift */; };
+		9423AD2323A1EAE000E27AFA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD2223A1EAE000E27AFA /* CoreDataStack.swift */; };
+		9423AD2623A1EB7600E27AFA /* DataBaseManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD2523A1EB7600E27AFA /* DataBaseManagerProtocol.swift */; };
+		9423AD2823A1F5CF00E27AFA /* PredicateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD2723A1F5CF00E27AFA /* PredicateFactory.swift */; };
+		9423AD2A23A1F5F000E27AFA /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD2923A1F5F000E27AFA /* DateManager.swift */; };
 		94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */; };
 		94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */; };
 		94EEEFB3239CB3B6000D077C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFB2239CB3B6000D077C /* AppDelegate.swift */; };
-		94EEEFB8239CB3CF000D077C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFB7239CB3CF000D077C /* CoreDataManager.swift */; };
 		94EEEFBB239CB416000D077C /* TasksManagerApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFB9239CB416000D077C /* TasksManagerApp.xcdatamodeld */; };
 		94EEEFC3239CFCEA000D077C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFC2239CFCEA000D077C /* MainTabBarController.swift */; };
 		94EEEFD0239D061E000D077C /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFCF239D061E000D077C /* BaseCoordinator.swift */; };
@@ -40,10 +50,20 @@
 		94210C0E239E20F300A64061 /* TaskFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormView.swift; sourceTree = "<group>"; };
 		94210C10239E228200A64061 /* ViewsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsFactory.swift; sourceTree = "<group>"; };
 		94210C12239E231600A64061 /* AnalyticViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewInput.swift; sourceTree = "<group>"; };
+		9423AD1223A1E18D00E27AFA /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		9423AD1423A1E2B800E27AFA /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		9423AD1723A1E40900E27AFA /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9423AD1823A1E40900E27AFA /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9423AD1923A1E40900E27AFA /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9423AD1A23A1E40900E27AFA /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9423AD2023A1E94600E27AFA /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		9423AD2223A1EAE000E27AFA /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		9423AD2523A1EB7600E27AFA /* DataBaseManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManagerProtocol.swift; sourceTree = "<group>"; };
+		9423AD2723A1F5CF00E27AFA /* PredicateFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredicateFactory.swift; sourceTree = "<group>"; };
+		9423AD2923A1F5F000E27AFA /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticPresenter.swift; sourceTree = "<group>"; };
 		94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewOutput.swift; sourceTree = "<group>"; };
 		94EEEFB2239CB3B6000D077C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		94EEEFB7239CB3CF000D077C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		94EEEFBA239CB416000D077C /* TasksManagerApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TasksManagerApp.xcdatamodel; sourceTree = "<group>"; };
 		94EEEFBE239CB6B0000D077C /* TasksManagerApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TasksManagerApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		94EEEFC2239CFCEA000D077C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -68,11 +88,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9423AD0823A1E06E00E27AFA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9423AD0923A1E07D00E27AFA /* Entities */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9423AD0923A1E07D00E27AFA /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				9423AD1623A1E3BA00E27AFA /* CoreDataModels */,
+				9423AD1223A1E18D00E27AFA /* TaskModel.swift */,
+				9423AD1423A1E2B800E27AFA /* ProjectModel.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		9423AD1623A1E3BA00E27AFA /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				9423AD1723A1E40900E27AFA /* Project+CoreDataClass.swift */,
+				9423AD1823A1E40900E27AFA /* Project+CoreDataProperties.swift */,
+				9423AD1923A1E40900E27AFA /* Task+CoreDataClass.swift */,
+				9423AD1A23A1E40900E27AFA /* Task+CoreDataProperties.swift */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		9423AD2423A1EB4400E27AFA /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				9423AD2223A1EAE000E27AFA /* CoreDataStack.swift */,
+				9423AD2023A1E94600E27AFA /* DataBaseManager.swift */,
+				9423AD2523A1EB7600E27AFA /* DataBaseManagerProtocol.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
 		94EEEFB6239CB3CF000D077C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				9423AD2423A1EB4400E27AFA /* DataBase */,
 				94EEEFCF239D061E000D077C /* BaseCoordinator.swift */,
-				94EEEFB7239CB3CF000D077C /* CoreDataManager.swift */,
+				9423AD2923A1F5F000E27AFA /* DateManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -154,6 +214,7 @@
 		94EEEFD7239D68ED000D077C /* Assemblage */ = {
 			isa = PBXGroup;
 			children = (
+				9423AD2723A1F5CF00E27AFA /* PredicateFactory.swift */,
 				94210C10239E228200A64061 /* ViewsFactory.swift */,
 			);
 			path = Assemblage;
@@ -336,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				94EEEFBE239CB6B0000D077C /* TasksManagerApp-Bridging-Header.h */,
+				9423AD0823A1E06E00E27AFA /* App */,
 				94EEEFD7239D68ED000D077C /* Assemblage */,
 				94EEEFEB239D713D000D077C /* Entrance */,
 				94EEEFC4239D00A2000D077C /* Modules */,
@@ -438,20 +500,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9423AD1523A1E2B800E27AFA /* ProjectModel.swift in Sources */,
 				94EEEFD0239D061E000D077C /* BaseCoordinator.swift in Sources */,
-				94EEEFB8239CB3CF000D077C /* CoreDataManager.swift in Sources */,
 				94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */,
 				94210C11239E228200A64061 /* ViewsFactory.swift in Sources */,
 				94EEF006239D9591000D077C /* AnalyticCoordinator.swift in Sources */,
 				94EEEFF6239D7D61000D077C /* MainTabBarCoordinator.swift in Sources */,
+				9423AD1323A1E18D00E27AFA /* TaskModel.swift in Sources */,
 				94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */,
+				9423AD2A23A1F5F000E27AFA /* DateManager.swift in Sources */,
+				9423AD1B23A1E40900E27AFA /* Project+CoreDataClass.swift in Sources */,
+				9423AD1D23A1E40900E27AFA /* Task+CoreDataClass.swift in Sources */,
 				94210C0B239E208E00A64061 /* TasksView.swift in Sources */,
+				9423AD2123A1E94600E27AFA /* DataBaseManager.swift in Sources */,
 				94EEEFC3239CFCEA000D077C /* MainTabBarController.swift in Sources */,
+				9423AD2623A1EB7600E27AFA /* DataBaseManagerProtocol.swift in Sources */,
+				9423AD1E23A1E40900E27AFA /* Task+CoreDataProperties.swift in Sources */,
+				9423AD1C23A1E40900E27AFA /* Project+CoreDataProperties.swift in Sources */,
 				94EEEFBB239CB416000D077C /* TasksManagerApp.xcdatamodeld in Sources */,
 				94210C03239E166900A64061 /* TasksCoordinator.swift in Sources */,
 				94210C0D239E20B500A64061 /* ProjectFormView.swift in Sources */,
 				94210C0F239E20F300A64061 /* TaskFormView.swift in Sources */,
+				9423AD2323A1EAE000E27AFA /* CoreDataStack.swift in Sources */,
 				94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */,
+				9423AD2823A1F5CF00E27AFA /* PredicateFactory.swift in Sources */,
 				94EEEFED239D7194000D077C /* AppCoordinator.swift in Sources */,
 				94210C07239E201500A64061 /* AnalyticView.swift in Sources */,
 				94210C13239E231600A64061 /* AnalyticViewInput.swift in Sources */,
