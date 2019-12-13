@@ -1,11 +1,3 @@
-//
-//  DateManager.swift
-//  BloodPressureDiary
-//
-//  Created by maxim on 27.11.2019.
-//  Copyright © 2019 lifeasplay. All rights reserved.
-//
-
 import Foundation
 
 enum DateFormats: String {
