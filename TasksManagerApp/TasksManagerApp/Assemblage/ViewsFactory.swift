@@ -36,7 +36,7 @@ struct ViewsFactory {
         let tasksController = TasksView()
         tasksController.tabBarItem = UITabBarItem(
             title: "Tasks",
-            image: nil, tag: 0
+            image: UIImage(named: "TasksTabIcon"), tag: 0
         )
         return tasksController
     }
@@ -45,7 +45,7 @@ struct ViewsFactory {
         let projectsController = ProjectsView()
         projectsController.tabBarItem = UITabBarItem(
             title: "Projects",
-            image: nil, tag: 1
+            image: UIImage(named: "ProjectsTabIcon"), tag: 1
         )
         return projectsController
     }
@@ -55,8 +55,8 @@ struct ViewsFactory {
         let analyticController = AnalyticView(presenter: presenter)
         presenter.viewInput = analyticController
         analyticController.tabBarItem = UITabBarItem(
-            title: "Analitic",
-            image: nil, tag: 2
+            title: "Analytic",
+            image: UIImage(named: "AnalyticTabIcon"), tag: 2
         )
         return analyticController
     }
