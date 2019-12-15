@@ -33,7 +33,7 @@ struct DataBaseManager: DataBaseManagerProtocol {
     
     func fetchTasks(by: NSPredicate) -> Result<[Task], Error> {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        let sort = NSSortDescriptor(key: "date", ascending: false)
+        let sort = NSSortDescriptor(key: "dateFrom", ascending: false)
         fetchRequest.sortDescriptors = [sort]
         fetchRequest.predicate = by
         do {
@@ -46,8 +46,6 @@ struct DataBaseManager: DataBaseManagerProtocol {
     
     func fetchProjects(by: NSPredicate) -> Result<[Project], Error> {
         let fetchRequest: NSFetchRequest<Project> = Project.fetchRequest()
-        let sort = NSSortDescriptor(key: "date", ascending: false)
-        fetchRequest.sortDescriptors = [sort]
         fetchRequest.predicate = by
         do {
             let result = try dataBase.context.fetch(fetchRequest)
@@ -57,11 +55,11 @@ struct DataBaseManager: DataBaseManagerProtocol {
         }
     }
     
-    func edit(task model: TaskModel) -> Error? {
+    func save(task: Task) -> Error? {
         return nil
     }
     
-    func edit(project model: ProjectModel) -> Error? {
+    func save(project: Project) -> Error? {
         return nil
     }
     
