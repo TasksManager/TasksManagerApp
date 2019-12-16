@@ -21,13 +21,13 @@ struct DataBaseManager: DataBaseManagerProtocol {
     // MARK: - CRUD
     func add(task model: TaskModel) -> Error? {
         let task = Task(context: dataBase.context)
-        task.addData(from: model)
+        task.setData(from: model)
         return dataBase.saveContext()
     }
     
     func add(project model: ProjectModel) -> Error? {
         let task = Project(context: dataBase.context)
-        task.addData(from: model)
+        task.setData(from: model)
         return dataBase.saveContext()
     }
     

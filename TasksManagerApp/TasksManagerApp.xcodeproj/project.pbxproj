@@ -164,8 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				9423AD1623A1E3BA00E27AFA /* CoreDataModels */,
-				9423AD1223A1E18D00E27AFA /* TaskModel.swift */,
 				9423AD1423A1E2B800E27AFA /* ProjectModel.swift */,
+				9423AD1223A1E18D00E27AFA /* TaskModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";

@@ -11,13 +11,17 @@ import UIKit
 /// Форма редактирования задачи.
 class TaskFormView: UIViewController {
     
-    // MARK: - Dependency
-    
-    // MARK: - Constants
-    // MARK: - Public properties
     // MARK: - Private properties
     
     private let viewOutput: TaskFormViewOutput
+    
+    private let saveButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Save", for: .normal)
+        button.addTarget(self, action: #selector(tapped), for: .touchUpInside)
+        return button
+    }()
     
     // MARK: - Init
     
@@ -32,19 +36,34 @@ class TaskFormView: UIViewController {
     
     // MARK: - Lifecycle ViewController
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewOutput.didAppear()
+        view.backgroundColor = .red
+        configure()
     }
     
-    // MARK: - Public methods
     // MARK: - Private methods
-    // MARK: - IBActions
-    // MARK: - Buttons methods
+    
+    private func configure() {
+        view.addSubview(saveButton)
+        
+        NSLayoutConstraint.activate([
+            saveButton.widthAnchor.constraint(equalToConstant: 100.0),
+            saveButton.heightAnchor.constraint(equalToConstant: 60),
+            saveButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
+    @objc private func tapped() {
+        onBack?("Saved")
+    }
+
+    
     // MARK: - Navigation
 
-
+    var onBack: ((String?) -> Void)?
 
 }
 
@@ -53,6 +72,15 @@ class TaskFormView: UIViewController {
 extension TaskFormView: TaskFormViewInput {
     
     func setData(task: Task?) {
-        
+        // Здесь устанавливаем данные.
     }
+    
+    func show(message: String) {
+        // Здесь показыаем алерт.
+    }
+    
+    func close(message: String?) {
+        onBack?(message)
+    }
+
 }

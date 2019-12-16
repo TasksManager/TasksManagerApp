@@ -23,7 +23,8 @@ struct ViewsFactory {
     }
     
     func createTaskFormView(_ task: Task?) -> TaskFormView {
-        let presenter = TaskFormPresenter(task)
+        let dbManager = DataBaseManager.instance
+        let presenter = TaskFormPresenter(dataBase: dbManager, task: task)
         let taskFormViewController = TaskFormView(presenter)
         return taskFormViewController
     }

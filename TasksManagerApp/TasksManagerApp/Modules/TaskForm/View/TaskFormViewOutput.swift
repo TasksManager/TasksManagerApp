@@ -8,8 +8,10 @@
 
 protocol TaskFormViewOutput: AnyObject {
     
-    /// Вызывается после создания новой задачи.
+    /// Появился контроллер
+    func didAppear()
+    /// Завершилось создание новой задачи.
     func didCraft(data: TaskModel)
-    /// Вызывается после редактирования сущестующей задачи.
-    func didEdit(task: TaskModel)
+    /// Завершилось редактирования сущестующей задачи.
+    func didEdit(data: TaskModel)
 }
