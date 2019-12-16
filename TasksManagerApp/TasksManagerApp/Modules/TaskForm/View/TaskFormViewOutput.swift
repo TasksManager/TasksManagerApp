@@ -6,4 +6,10 @@
 //  Copyright © 2019 Mikhail Semerikov. All rights reserved.
 //
 
-import Foundation
+protocol TaskFormViewOutput: AnyObject {
+    
+    /// Вызывается после создания новой задачи.
+    func didCraft(data: TaskModel)
+    /// Вызывается после редактирования сущестующей задачи.
+    func didEdit(task: TaskModel)
+}

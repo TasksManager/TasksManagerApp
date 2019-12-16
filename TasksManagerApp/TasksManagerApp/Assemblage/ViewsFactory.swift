@@ -22,8 +22,9 @@ struct ViewsFactory {
         return tabBarController
     }
     
-    func createTaskFormView() -> TaskFormView {
-        let taskFormViewController = TaskFormView()
+    func createTaskFormView(_ task: Task?) -> TaskFormView {
+        let presenter = TaskFormPresenter(task)
+        let taskFormViewController = TaskFormView(presenter)
         return taskFormViewController
     }
     

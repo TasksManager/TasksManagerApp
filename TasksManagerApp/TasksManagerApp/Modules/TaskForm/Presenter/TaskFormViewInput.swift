@@ -6,4 +6,8 @@
 //  Copyright © 2019 Mikhail Semerikov. All rights reserved.
 //
 
-import Foundation
+protocol TaskFormViewInput: AnyObject {
+        
+    /// Устанавливает начальные данные.
+    func setData(task: Task?)
+}

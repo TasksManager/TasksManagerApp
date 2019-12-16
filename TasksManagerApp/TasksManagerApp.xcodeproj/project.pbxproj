@@ -41,6 +41,10 @@
 		9423AD2623A1EB7600E27AFA /* DataBaseManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD2523A1EB7600E27AFA /* DataBaseManagerProtocol.swift */; };
 		9423AD2823A1F5CF00E27AFA /* PredicateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD2723A1F5CF00E27AFA /* PredicateFactory.swift */; };
 		9423AD2A23A1F5F000E27AFA /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD2923A1F5F000E27AFA /* DateManager.swift */; };
+		942D0BB323A7BA02006AC48A /* TaskFormViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB223A7BA02006AC48A /* TaskFormViewOutput.swift */; };
+		942D0BB623A7BA27006AC48A /* TaskFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB423A7BA27006AC48A /* TaskFormPresenter.swift */; };
+		942D0BB723A7BA27006AC48A /* TaskFormViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB523A7BA27006AC48A /* TaskFormViewInput.swift */; };
+		942D0BB923A7BA3A006AC48A /* TaskFormCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */; };
 		94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */; };
 		94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */; };
 		94EEEFB3239CB3B6000D077C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFB2239CB3B6000D077C /* AppDelegate.swift */; };
@@ -89,6 +93,10 @@
 		9423AD2523A1EB7600E27AFA /* DataBaseManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManagerProtocol.swift; sourceTree = "<group>"; };
 		9423AD2723A1F5CF00E27AFA /* PredicateFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredicateFactory.swift; sourceTree = "<group>"; };
 		9423AD2923A1F5F000E27AFA /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		942D0BB223A7BA02006AC48A /* TaskFormViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormViewOutput.swift; sourceTree = "<group>"; };
+		942D0BB423A7BA27006AC48A /* TaskFormPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormPresenter.swift; sourceTree = "<group>"; };
+		942D0BB523A7BA27006AC48A /* TaskFormViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormViewInput.swift; sourceTree = "<group>"; };
+		942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormCoordinator.swift; sourceTree = "<group>"; };
 		94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticPresenter.swift; sourceTree = "<group>"; };
 		94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewOutput.swift; sourceTree = "<group>"; };
 		94EEEFB2239CB3B6000D077C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -383,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				94210C0E239E20F300A64061 /* TaskFormView.swift */,
+				942D0BB223A7BA02006AC48A /* TaskFormViewOutput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -390,6 +399,8 @@
 		94EEEFE9239D6F30000D077C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				942D0BB423A7BA27006AC48A /* TaskFormPresenter.swift */,
+				942D0BB523A7BA27006AC48A /* TaskFormViewInput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -397,6 +408,7 @@
 		94EEEFEA239D6F38000D077C /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -574,8 +586,10 @@
 				4685DDF923A606ED00B34FD0 /* UIColor+Extensions.swift in Sources */,
 				94EEEFD0239D061E000D077C /* BaseCoordinator.swift in Sources */,
 				94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */,
+				942D0BB723A7BA27006AC48A /* TaskFormViewInput.swift in Sources */,
 				94210C11239E228200A64061 /* ViewsFactory.swift in Sources */,
 				94EEF006239D9591000D077C /* AnalyticCoordinator.swift in Sources */,
+				942D0BB323A7BA02006AC48A /* TaskFormViewOutput.swift in Sources */,
 				94EEEFF6239D7D61000D077C /* MainTabBarCoordinator.swift in Sources */,
 				9423AD1323A1E18D00E27AFA /* TaskModel.swift in Sources */,
 				94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */,
@@ -586,6 +600,7 @@
 				9423AD2123A1E94600E27AFA /* DataBaseManager.swift in Sources */,
 				94EEEFC3239CFCEA000D077C /* MainTabBarController.swift in Sources */,
 				9423AD2623A1EB7600E27AFA /* DataBaseManagerProtocol.swift in Sources */,
+				942D0BB923A7BA3A006AC48A /* TaskFormCoordinator.swift in Sources */,
 				9423AD1E23A1E40900E27AFA /* Task+CoreDataProperties.swift in Sources */,
 				9423AD1C23A1E40900E27AFA /* Project+CoreDataProperties.swift in Sources */,
 				94EEEFBB239CB416000D077C /* TasksManagerApp.xcdatamodeld in Sources */,
@@ -596,6 +611,7 @@
 				94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */,
 				9423AD2823A1F5CF00E27AFA /* PredicateFactory.swift in Sources */,
 				94EEEFED239D7194000D077C /* AppCoordinator.swift in Sources */,
+				942D0BB623A7BA27006AC48A /* TaskFormPresenter.swift in Sources */,
 				94210C07239E201500A64061 /* AnalyticView.swift in Sources */,
 				94210C13239E231600A64061 /* AnalyticViewInput.swift in Sources */,
 				94EEEFB3239CB3B6000D077C /* AppDelegate.swift in Sources */,
