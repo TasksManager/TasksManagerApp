@@ -28,7 +28,8 @@ struct ViewsFactory {
     }
     
     func createProjectFormView() -> ProjectFormView {
-        let projectFormViewController = ProjectFormView()
+        let presenter = ProjectFormPresenter()
+        let projectFormViewController = ProjectFormView(presenter)
         return projectFormViewController
     }
     
@@ -42,7 +43,8 @@ struct ViewsFactory {
     }
     
     func createProjectsView() -> ProjectsView {
-        let projectsController = ProjectsView()
+        let presenter = ProjectsPresenter()
+        let projectsController = ProjectsView(presenter)
         projectsController.tabBarItem = UITabBarItem(
             title: "Projects",
             image: UIImage(named: "ProjectsTabIcon"), tag: 1

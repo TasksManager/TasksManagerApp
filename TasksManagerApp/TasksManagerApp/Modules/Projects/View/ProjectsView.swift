@@ -9,22 +9,163 @@
 import UIKit
 
 class ProjectsView: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    // MARK: - Dependency
+    private let viewOutput: ProjectsViewOutput
+    
+    // MARK: - Constants
+    private let width = UIScreen.main.bounds.width
+    private let height = UIScreen.main.bounds.height
+    private let topView = UIView()
+    private let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    private let topViewLabel = UILabel()
+    private let addButton = UIButton()
+    
+    private let topViewHeight: CGFloat = 30
+    
+    // MARK: - Init
+    init(_ presenter: ProjectsViewOutput) {
+        self.viewOutput = presenter
+        super.init(nibName: nil, bundle: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    */
+    
+    // MARK: - Lifecycle ViewController
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .tmaColor
+        setupTopView()
+        setupTableView()
+        setupTopViewLabel()
+        setupAddButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    // MARK: - Puplic methods
+    // MARK: - Private methods
+    private func setupTopView() {
+        view.addSubview(topView)
+        topView.backgroundColor = .tmaColor
+        
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        let topConstraint = topView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        let leadingConstraint = topView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let widthConstraint = topView.widthAnchor.constraint(equalToConstant: width)
+        let heightConstraint = topView.heightAnchor.constraint(equalToConstant: topViewHeight)
+        view.addConstraints([topConstraint, leadingConstraint, widthConstraint, heightConstraint])
+    }
+    
+    private func setupTopViewLabel() {
+        topViewLabel.font = .systemFontOfSize(size: 26)
+        topViewLabel.textColor = .tmaWhiteColor
+        topViewLabel.text = viewOutput.getDate()
+        topViewLabel.textAlignment = .center
+        topViewLabel.numberOfLines = 1
+        topView.addSubview(topViewLabel)
+        
+        topViewLabel.translatesAutoresizingMaskIntoConstraints = false
+        let topConstraint = topViewLabel.topAnchor.constraint(equalTo: topView.topAnchor)
+        let horizontalConstraint = topViewLabel.centerXAnchor.constraint(equalTo: topView.centerXAnchor)
+        let widthConstraint = topViewLabel.widthAnchor.constraint(equalToConstant: width - 120)
+        let heightConstraint = topViewLabel.heightAnchor.constraint(equalToConstant: topViewHeight)
+        topView.addConstraints([horizontalConstraint, topConstraint, widthConstraint, heightConstraint])
+    }
+    
+    private func setupAddButton() {
+        addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        addButton.titleLabel?.font = .systemFontOfSize(size: 26)
+        addButton.titleLabel?.textColor = .tmaWhiteColor
+        addButton.setTitle("+", for: .normal)
+        topView.addSubview(addButton)
+        
+        addButton.isAccessibilityElement = true
+        addButton.accessibilityIdentifier = "addProjectButton"
+        
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = addButton.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -15)
+        let verticalConstraint = addButton.topAnchor.constraint(equalTo: topView.topAnchor)
+        let widthConstraint = addButton.widthAnchor.constraint(equalToConstant: topViewHeight)
+        let heightConstraint = addButton.heightAnchor.constraint(equalToConstant: topViewHeight)
+        topView.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+    }
+    
+    private func setupTableView() {
+        view.addSubview(tableView)
+        tableView.register(ProjectsViewCell.self, forCellReuseIdentifier: "ProjectsViewCell")
+        tableView.backgroundColor = .tmaWhiteColor
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        let topConstraint = tableView.topAnchor.constraint(equalTo: topView.bottomAnchor)
+        let leadingConstraint = tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let widthConstraint = tableView.widthAnchor.constraint(equalToConstant: width)
+        let heightConstraint = tableView.heightAnchor.constraint(equalToConstant: height - topViewHeight)
+        view.addConstraints([topConstraint, leadingConstraint, widthConstraint, heightConstraint])
+    }
+    
+    // MARK: - IBActions
+    @objc private func addButtonPressed() {
+        onProjectForm?()
+    }
+    // MARK: - Buttons methods
+    // MARK: - Navigation
+    var onProjectForm: (() -> Void)?
 
 }
+
+extension ProjectsView: UITableViewDelegate {
+    
+}
+
+extension ProjectsView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewOutput.getCountProjects()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectsViewCell",
+                                                       for: indexPath) as? ProjectsViewCell
+            else { return UITableViewCell() }
+
+        cell.configure(viewOutput.getProjectTitle(index: indexPath.row))
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 56
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .normal, title: "Delete") { action, view, completionHandler in
+            print("Deleting!")
+            completionHandler(true)
+        }
+        
+        let edit = UIContextualAction(style: .normal, title: "Edit") { action, view, completionHandler in
+            print("Editing!")
+            completionHandler(true)
+        }
+
+        delete.backgroundColor = .red
+        edit.backgroundColor = .orange
+
+        let config = UISwipeActionsConfiguration(actions: [delete, edit])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+    }
+
+}
+
+extension ProjectsView: ProjectsViewInput {}

@@ -21,6 +21,10 @@
 		46F87E5623A65FCE0095264E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46F87E4A23A65FCE0095264E /* Roboto-Regular.ttf */; };
 		46F87E5723A65FCE0095264E /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46F87E4B23A65FCE0095264E /* Roboto-Thin.ttf */; };
 		46F87E5923A660BD0095264E /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E5823A660BD0095264E /* UIFont+Extensions.swift */; };
+		46F87E6323A7D92E0095264E /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E6223A7D92E0095264E /* ProjectsPresenter.swift */; };
+		46F87E6523A7D94F0095264E /* ProjectsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E6423A7D94F0095264E /* ProjectsViewOutput.swift */; };
+		46F87E6723A7D95A0095264E /* ProjectsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E6623A7D95A0095264E /* ProjectsViewInput.swift */; };
+		46F87E6923A7D96E0095264E /* ProjectsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E6823A7D96E0095264E /* ProjectsViewCell.swift */; };
 		94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C00239E162800A64061 /* ProjectsCoordinator.swift */; };
 		94210C03239E166900A64061 /* TasksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C02239E166900A64061 /* TasksCoordinator.swift */; };
 		94210C07239E201500A64061 /* AnalyticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C06239E201500A64061 /* AnalyticView.swift */; };
@@ -50,6 +54,10 @@
 		94EEEFED239D7194000D077C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFEC239D7194000D077C /* AppCoordinator.swift */; };
 		94EEEFF6239D7D61000D077C /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFF5239D7D61000D077C /* MainTabBarCoordinator.swift */; };
 		94EEF006239D9591000D077C /* AnalyticCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEF005239D9591000D077C /* AnalyticCoordinator.swift */; };
+		C48F15AE23A9E0B5002D04E3 /* ProjectFormViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15AD23A9E0B5002D04E3 /* ProjectFormViewOutput.swift */; };
+		C48F15B023A9E0E4002D04E3 /* ProjectFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15AF23A9E0E4002D04E3 /* ProjectFormPresenter.swift */; };
+		C48F15B223A9E0F5002D04E3 /* ProjectFormViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15B123A9E0F5002D04E3 /* ProjectFormViewInput.swift */; };
+		C48F15B423A9E979002D04E3 /* ProjectFormCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15B323A9E979002D04E3 /* ProjectFormCoordinator.swift */; };
 		C4E13D1B239A5543003C3246 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E13D1A239A5543003C3246 /* Assets.xcassets */; };
 		C4E13D1E239A5543003C3246 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E13D1C239A5543003C3246 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -69,6 +77,10 @@
 		46F87E4A23A65FCE0095264E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		46F87E4B23A65FCE0095264E /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		46F87E5823A660BD0095264E /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		46F87E6223A7D92E0095264E /* ProjectsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsPresenter.swift; sourceTree = "<group>"; };
+		46F87E6423A7D94F0095264E /* ProjectsViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewOutput.swift; sourceTree = "<group>"; };
+		46F87E6623A7D95A0095264E /* ProjectsViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewInput.swift; sourceTree = "<group>"; };
+		46F87E6823A7D96E0095264E /* ProjectsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewCell.swift; sourceTree = "<group>"; };
 		94210C00239E162800A64061 /* ProjectsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCoordinator.swift; sourceTree = "<group>"; };
 		94210C02239E166900A64061 /* TasksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCoordinator.swift; sourceTree = "<group>"; };
 		94210C06239E201500A64061 /* AnalyticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticView.swift; sourceTree = "<group>"; };
@@ -99,6 +111,10 @@
 		94EEEFEC239D7194000D077C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		94EEEFF5239D7D61000D077C /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		94EEF005239D9591000D077C /* AnalyticCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticCoordinator.swift; sourceTree = "<group>"; };
+		C48F15AD23A9E0B5002D04E3 /* ProjectFormViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFormViewOutput.swift; sourceTree = "<group>"; };
+		C48F15AF23A9E0E4002D04E3 /* ProjectFormPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectFormPresenter.swift; path = TasksManagerApp/Modules/ProjectForm/View/ProjectFormPresenter.swift; sourceTree = SOURCE_ROOT; };
+		C48F15B123A9E0F5002D04E3 /* ProjectFormViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectFormViewInput.swift; path = TasksManagerApp/Modules/ProjectForm/View/ProjectFormViewInput.swift; sourceTree = SOURCE_ROOT; };
+		C48F15B323A9E979002D04E3 /* ProjectFormCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectFormCoordinator.swift; path = TasksManagerApp/Modules/ProjectForm/View/ProjectFormCoordinator.swift; sourceTree = SOURCE_ROOT; };
 		C4E13D0E239A5526003C3246 /* TasksManagerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TasksManagerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E13D1A239A5543003C3246 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4E13D1D239A5543003C3246 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -239,6 +255,8 @@
 		94EEEFC6239D00C1000D077C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				46F87E6223A7D92E0095264E /* ProjectsPresenter.swift */,
+				46F87E6623A7D95A0095264E /* ProjectsViewInput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -312,6 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				94210C08239E205F00A64061 /* ProjectsView.swift */,
+				46F87E6823A7D96E0095264E /* ProjectsViewCell.swift */,
+				46F87E6423A7D94F0095264E /* ProjectsViewOutput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -346,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				94210C0C239E20B500A64061 /* ProjectFormView.swift */,
+				C48F15AD23A9E0B5002D04E3 /* ProjectFormViewOutput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,6 +374,8 @@
 		94EEEFE4239D6EE0000D077C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				C48F15AF23A9E0E4002D04E3 /* ProjectFormPresenter.swift */,
+				C48F15B123A9E0F5002D04E3 /* ProjectFormViewInput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -360,6 +383,7 @@
 		94EEEFE5239D6EE8000D077C /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				C48F15B323A9E979002D04E3 /* ProjectFormCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -570,6 +594,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C48F15B023A9E0E4002D04E3 /* ProjectFormPresenter.swift in Sources */,
+				C48F15B223A9E0F5002D04E3 /* ProjectFormViewInput.swift in Sources */,
 				9423AD1523A1E2B800E27AFA /* ProjectModel.swift in Sources */,
 				4685DDF923A606ED00B34FD0 /* UIColor+Extensions.swift in Sources */,
 				94EEEFD0239D061E000D077C /* BaseCoordinator.swift in Sources */,
@@ -590,10 +616,15 @@
 				9423AD1C23A1E40900E27AFA /* Project+CoreDataProperties.swift in Sources */,
 				94EEEFBB239CB416000D077C /* TasksManagerApp.xcdatamodeld in Sources */,
 				94210C03239E166900A64061 /* TasksCoordinator.swift in Sources */,
+				46F87E6923A7D96E0095264E /* ProjectsViewCell.swift in Sources */,
+				46F87E6323A7D92E0095264E /* ProjectsPresenter.swift in Sources */,
 				94210C0D239E20B500A64061 /* ProjectFormView.swift in Sources */,
 				94210C0F239E20F300A64061 /* TaskFormView.swift in Sources */,
+				C48F15B423A9E979002D04E3 /* ProjectFormCoordinator.swift in Sources */,
 				9423AD2323A1EAE000E27AFA /* CoreDataStack.swift in Sources */,
+				C48F15AE23A9E0B5002D04E3 /* ProjectFormViewOutput.swift in Sources */,
 				94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */,
+				46F87E6523A7D94F0095264E /* ProjectsViewOutput.swift in Sources */,
 				9423AD2823A1F5CF00E27AFA /* PredicateFactory.swift in Sources */,
 				94EEEFED239D7194000D077C /* AppCoordinator.swift in Sources */,
 				94210C07239E201500A64061 /* AnalyticView.swift in Sources */,
@@ -601,6 +632,7 @@
 				94EEEFB3239CB3B6000D077C /* AppDelegate.swift in Sources */,
 				46F87E5923A660BD0095264E /* UIFont+Extensions.swift in Sources */,
 				94210C09239E205F00A64061 /* ProjectsView.swift in Sources */,
+				46F87E6723A7D95A0095264E /* ProjectsViewInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,7 +770,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X37P9Q6XJN;
+				DEVELOPMENT_TEAM = 786FYLB3L3;
 				INFOPLIST_FILE = "$(SRCROOT)/TasksManagerApp/Environments/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -759,7 +791,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X37P9Q6XJN;
+				DEVELOPMENT_TEAM = 786FYLB3L3;
 				INFOPLIST_FILE = "$(SRCROOT)/TasksManagerApp/Environments/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

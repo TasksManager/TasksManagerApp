@@ -11,22 +11,18 @@ import UIKit
 class MainTabBarCoordinator: BaseCoordinator {
 
     // MARK: - Public properties
-
     var onFinishFlow: (() -> Void)?
 
     // MARK: - Private properties
-    
     private var tabBarController: MainTabBarController?
     private var tabBarCoordinator: BaseCoordinator?
     
     // MARK: - Puplic methods
-    
     override func start() {
         setupTabBarController()
     }
     
     // MARK: - Private methods
-    
     private func setupTabBarController() {
         let factory = ViewsFactory()
         let tabBarController = factory.createMainTabBarController()
@@ -59,7 +55,7 @@ class MainTabBarCoordinator: BaseCoordinator {
         case controller as TasksView:
             tabBarCoordinator = TasksCoordinator(controller)
         case controller as ProjectsView:
-            tabBarCoordinator = ProjectsCoordinator(controller)
+            tabBarCoordinator = ProjectsCoordinator(controller as! ProjectsView)
         case controller as AnalyticView:
             tabBarCoordinator = AnalyticCoordinator(controller)
         default:
