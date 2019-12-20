@@ -6,6 +6,9 @@
 //  Copyright © 2019 Mikhail Semerikov. All rights reserved.
 //
 
-protocol ProjectFormViewOutput {
+protocol ProjectFormViewOutput: AnyObject {
     func addProject(title: String, color: String)
+    func didAppear()
+    func didCraft(data: ProjectModel)
+    func didEdit(data: ProjectModel)
 }

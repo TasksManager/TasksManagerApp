@@ -7,5 +7,7 @@
 //
 
 protocol ProjectFormViewInput: AnyObject {
-    
+    func setData(project: Project?)
+    func show(message: String)
+    func close(message: String?)
 }

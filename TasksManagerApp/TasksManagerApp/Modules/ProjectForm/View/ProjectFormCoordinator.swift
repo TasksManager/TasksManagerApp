@@ -11,14 +11,16 @@ import UIKit
 class ProjectFormCoordinator: BaseCoordinator {
 
     // MARK: - Public properties
-    var onFinishFlow: (() -> Void)?
+    var onFinishFlow: ((String?) -> Void)?
     
     // MARK: - Private properties
     private let parentController: UIViewController
+    private let project: Project?
     
     // MARK: - Init
-    init(parentController: UIViewController) {
+    init(parentController: UIViewController, project: Project?) {
         self.parentController = parentController
+        self.project = project
     }
     
     // MARK: - Puplic methods
@@ -28,11 +30,11 @@ class ProjectFormCoordinator: BaseCoordinator {
     
     // MARK: - Private methods
     private func showProjectFormModule() {
-        let controller = ViewsFactory().createProjectFormView()
+        let controller = ViewsFactory().createProjectFormView(project)
         controller.modalPresentationStyle = .fullScreen
-        controller.onBack = { [weak self] in
+        controller.onBack = { [weak self] message in
             controller.dismiss(animated: true)
-            self?.onFinishFlow?()
+            self?.onFinishFlow?(message)
         }
         parentController.present(controller, animated: true)
     }

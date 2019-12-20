@@ -9,7 +9,7 @@
 import UIKit
 
 class ProjectsCoordinator: BaseCoordinator {
-
+    
     // MARK: - Private properties
     private let controller: ProjectsView
     
@@ -26,12 +26,13 @@ class ProjectsCoordinator: BaseCoordinator {
     // MARK: - Private methods
     private func showProjectsModule() {
         controller.tabBarController?.selectedIndex = controller.tabBarItem.tag
-        controller.onProjectForm = { [weak self] in
+        controller.onProjectForm = { [weak self] project in
             guard  let self = self else { return }
             let coordinator = ProjectFormCoordinator(
-                parentController: self.controller
+                parentController: self.controller,
+                project: project
             )
-            coordinator.onFinishFlow = { [weak self, weak coordinator] in
+            coordinator.onFinishFlow = { [weak self, weak coordinator] message in
                 self?.removeDependency(coordinator)
                 self?.start()
             }

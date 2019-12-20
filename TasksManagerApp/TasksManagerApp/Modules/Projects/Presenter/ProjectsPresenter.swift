@@ -12,10 +12,12 @@ import UIKit
 final class ProjectsPresenter {
     
     // MARK: - Dependency
-    
     weak var viewInput: (UIViewController & ProjectsViewInput)?
     
     // MARK: - Constants
+    let dbManager = DataBaseManager.instance
+    let predicate = NSPredicate(value: true)
+    var arrayProjects: [Project]?
     // MARK: - Public properties
     // MARK: - Private properties
     // MARK: - Init
@@ -23,35 +25,31 @@ final class ProjectsPresenter {
     // MARK: - Puplic methods
     
     func deleteProject(index: Int) {
-        let dbManager = DataBaseManager.instance
-        _ = dbManager.delete(projects: [index])
+        guard let project = arrayProjects?[index] else { return }
+        dbManager.deleteProject(project: project)
+        arrayProjects?.remove(at: index)
+    }
+    
+    func getProject(index: Int) -> Project? {
+        return arrayProjects?[index]
+    }
+    
+    func getProjects() {
+        let projects = dbManager.fetchProjects(by: predicate)
+        do {
+            arrayProjects = try projects.get()
+        } catch {
+            arrayProjects = nil
+        }
     }
     
     func getCountProjects() -> Int {
-        let dbManager = DataBaseManager.instance
-        let predicate = NSPredicate(value: true)
-        let projects = dbManager.fetchProjects(by: predicate)
-        
-        let numberOfRowsInSection: Int?
-        do {
-            numberOfRowsInSection = try projects.get().count
-        } catch {
-            numberOfRowsInSection = nil
-        }
-        
-        return numberOfRowsInSection ?? 0
+        getProjects()
+        return arrayProjects?.count ?? 0
     }
     
     func getProjectTitle(index: Int) -> String {
-        let dbManager = DataBaseManager.instance
-        let predicate = NSPredicate(value: true)
-        let projects = dbManager.fetchProjects(by: predicate)
-        switch projects {
-        case .success(let project):
-            return project[index].title
-        case .failure(let error):
-             return error.localizedDescription
-        }
+        return arrayProjects?[index].title ?? "Title not found"
     }
     
     func getDate() -> String {

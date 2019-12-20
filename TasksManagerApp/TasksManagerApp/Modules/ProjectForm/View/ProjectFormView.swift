@@ -66,6 +66,11 @@ class ProjectFormView: UIViewController, UIScrollViewDelegate {
                                                object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewOutput.didAppear()
+    }
+    
     // MARK: - Puplic methods
     // MARK: - Private methods
     private func setupBackButton() {
@@ -240,13 +245,12 @@ class ProjectFormView: UIViewController, UIScrollViewDelegate {
     
     // MARK: - IBActions
     @objc private func backButtonPressed() {
-        onBack?()
+        onBack?(nil)
     }
     
     @objc private func saveButtonPressed() {
         guard let title = projectNameTextField.text, let color = projectColorTextField.text else { return }
         viewOutput.addProject(title: title, color: color)
-        onBack?()
     }
     
     @objc func hideKeyboard() {
@@ -278,8 +282,24 @@ class ProjectFormView: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Buttons methods
     // MARK: - Navigation
-    var onBack: (() -> Void)?
+    var onBack: ((String?) -> Void)?
     
 }
 
-extension ProjectFormView: ProjectFormViewInput {}
+extension ProjectFormView: ProjectFormViewInput {
+    
+    func setData(project: Project?) {
+        guard let title = project?.title else { return }
+        topLabel.text = title
+        projectNameTextField.text = title
+        projectColorTextField.text = project?.color
+    }
+    
+    func show(message: String) {
+        // Здесь показыаем алерт.
+    }
+    
+    func close(message: String?) {
+        onBack?(nil)
+    }
+}

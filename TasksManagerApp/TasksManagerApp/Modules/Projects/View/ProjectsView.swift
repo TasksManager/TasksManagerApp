@@ -17,11 +17,13 @@ class ProjectsView: UIViewController {
     private let width = UIScreen.main.bounds.width
     private let height = UIScreen.main.bounds.height
     private let topView = UIView()
-    private let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    private let tableView = UITableView(frame: CGRect.zero, style: .plain)
     private let topViewLabel = UILabel()
     private let addButton = UIButton()
+    private let searchBar = UISearchBar()
     
     private let topViewHeight: CGFloat = 30
+    private let searchBarHeight: CGFloat = 50
     
     // MARK: - Init
     init(_ presenter: ProjectsViewOutput) {
@@ -38,6 +40,7 @@ class ProjectsView: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .tmaColor
         setupTopView()
+        setupSearchBar()
         setupTableView()
         setupTopViewLabel()
         setupAddButton()
@@ -95,6 +98,17 @@ class ProjectsView: UIViewController {
         topView.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
     }
     
+    private func setupSearchBar() {
+        view.addSubview(searchBar)
+        
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        let topConstraint = searchBar.topAnchor.constraint(equalTo: topView.bottomAnchor)
+        let leadingConstraint = searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let widthConstraint = searchBar.widthAnchor.constraint(equalToConstant: width)
+        let heightConstraint = searchBar.heightAnchor.constraint(equalToConstant: searchBarHeight)
+        view.addConstraints([topConstraint, leadingConstraint, widthConstraint, heightConstraint])
+    }
+    
     private func setupTableView() {
         view.addSubview(tableView)
         tableView.register(ProjectsViewCell.self, forCellReuseIdentifier: "ProjectsViewCell")
@@ -103,20 +117,21 @@ class ProjectsView: UIViewController {
         tableView.delegate = self
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        let topConstraint = tableView.topAnchor.constraint(equalTo: topView.bottomAnchor)
+        let tableViewHeight = height - topViewHeight - searchBarHeight
+        let topConstraint = tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor)
         let leadingConstraint = tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         let widthConstraint = tableView.widthAnchor.constraint(equalToConstant: width)
-        let heightConstraint = tableView.heightAnchor.constraint(equalToConstant: height - topViewHeight)
+        let heightConstraint = tableView.heightAnchor.constraint(equalToConstant: tableViewHeight)
         view.addConstraints([topConstraint, leadingConstraint, widthConstraint, heightConstraint])
     }
     
     // MARK: - IBActions
     @objc private func addButtonPressed() {
-        onProjectForm?()
+        onProjectForm?(nil)
     }
     // MARK: - Buttons methods
     // MARK: - Navigation
-    var onProjectForm: (() -> Void)?
+    var onProjectForm: ((Project?) -> Void)?
 
 }
 
@@ -149,12 +164,13 @@ extension ProjectsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .normal, title: "Delete") { action, view, completionHandler in
-            print("Deleting!")
+            self.viewOutput.deleteProject(index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             completionHandler(true)
         }
         
         let edit = UIContextualAction(style: .normal, title: "Edit") { action, view, completionHandler in
-            print("Editing!")
+            self.onProjectForm?(self.viewOutput.getProject(index: indexPath.row))
             completionHandler(true)
         }
 

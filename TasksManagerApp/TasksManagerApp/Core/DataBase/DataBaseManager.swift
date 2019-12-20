@@ -70,5 +70,9 @@ struct DataBaseManager: DataBaseManagerProtocol {
     func delete(projects: [Int]) -> Error? {
         return nil
     }
+    
+    func deleteProject(project: Project) {
+        dataBase.delete(project: project)
+    }
 
 }
