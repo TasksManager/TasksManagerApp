@@ -9,13 +9,23 @@
 import UIKit
 
 class AnalyticView: UIViewController {
+    
     // MARK: - Dependency
     
     let presenter: AnalyticViewOutput
-    
-    // MARK: - Constants
-    // MARK: - Public properties
+
     // MARK: - Private properties
+    
+    // FIXME: - Убрать! Оставил потому, что нужна кнопка пререхода на форму.
+    
+    let addTaskButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Add Task", for: .normal)
+        button.addTarget(self, action: #selector(tapped), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Init
     
     init(presenter: AnalyticViewOutput) {
@@ -32,15 +42,30 @@ class AnalyticView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .green
+        configure()
+    }
+
+    // MARK: - Private methods
+    
+    private func configure() {
+        view.addSubview(addTaskButton)
         
-        
+        NSLayoutConstraint.activate([
+            addTaskButton.widthAnchor.constraint(equalToConstant: 100.0),
+            addTaskButton.heightAnchor.constraint(equalToConstant: 60),
+            addTaskButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            addTaskButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
     
-    // MARK: - Puplic methods
-    // MARK: - Private methods
-    // MARK: - IBActions
-    // MARK: - Buttons methods
+    @objc private func tapped() {
+        onTaskForm?()
+    }
+
     // MARK: - Navigation
+    
+    var onTaskForm: (() -> Void)?
 }
 
 // MARK: - AnaliticViewInput

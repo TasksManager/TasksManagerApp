@@ -19,6 +19,7 @@ struct PredicateFactory {
     
     let dataManager = DateManager()
     let periodFormat = "(date >= %@) AND (date <= %@)"
+    let idFormat = "%K == %@"
 
     // MARK: - Puplic methods
     
@@ -42,6 +43,12 @@ struct PredicateFactory {
     ///   - startDay: Начальная дата.
     func predicate(endDay: Date, startDay: Date) -> NSPredicate {
         return NSPredicate(format: periodFormat, startDay as NSDate, endDay as NSDate)
+    }
+    
+    /// Возвращает предикат для id.
+    /// - Parameter id: идентификатор объекта.
+    func predicate(id: UUID) -> NSPredicate {
+        return NSPredicate(format: "%K == %@", "id", id as CVarArg)
     }
     
 }

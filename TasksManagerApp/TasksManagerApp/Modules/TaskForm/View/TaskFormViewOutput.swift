@@ -6,4 +6,12 @@
 //  Copyright © 2019 Mikhail Semerikov. All rights reserved.
 //
 
-import Foundation
+protocol TaskFormViewOutput: AnyObject {
+    
+    /// Появился контроллер
+    func didAppear()
+    /// Завершилось создание новой задачи.
+    func didCraft(data: TaskModel)
+    /// Завершилось редактирования сущестующей задачи.
+    func didEdit(data: TaskModel)
+}

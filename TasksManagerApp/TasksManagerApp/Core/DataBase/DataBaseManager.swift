@@ -17,58 +17,104 @@ struct DataBaseManager: DataBaseManagerProtocol {
     private init() {}
     
     private let dataBase = CoreDataStack.instance
+    private let predicateFactory = PredicateFactory()
     
     // MARK: - CRUD
+    
     func add(task model: TaskModel) -> Error? {
         let task = Task(context: dataBase.context)
-        task.addData(from: model)
+        task.setData(from: model)
         return dataBase.saveContext()
     }
     
     func add(project model: ProjectModel) -> Error? {
         let task = Project(context: dataBase.context)
-        task.addData(from: model)
+        task.setData(from: model)
         return dataBase.saveContext()
     }
     
-    func fetchTasks(by: NSPredicate) -> Result<[Task], Error> {
+    func fetch(tasks by: NSPredicate) -> Result<[Task], Error> {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         let sort = NSSortDescriptor(key: "dateFrom", ascending: false)
         fetchRequest.sortDescriptors = [sort]
         fetchRequest.predicate = by
         do {
-            let result = try dataBase.context.fetch(fetchRequest)
-            return .success(result)
+            let tasks = try dataBase.context.fetch(fetchRequest)
+            return .success(tasks)
         } catch let error {
             return .failure(error)
         }
     }
     
-    func fetchProjects(by: NSPredicate) -> Result<[Project], Error> {
+    func fetch(projects by: NSPredicate) -> Result<[Project], Error> {
         let fetchRequest: NSFetchRequest<Project> = Project.fetchRequest()
         fetchRequest.predicate = by
         do {
-            let result = try dataBase.context.fetch(fetchRequest)
-            return .success(result)
+            let projects = try dataBase.context.fetch(fetchRequest)
+            return .success(projects)
         } catch let error {
             return .failure(error)
         }
     }
     
-    func save(task: Task) -> Error? {
-        return nil
+    func save(task model: TaskModel) -> Error? {
+        let predicate = predicateFactory.predicate(id: model.id)
+        let result = fetch(tasks: predicate)
+        do {
+            let tasks = try result.get()
+            guard let task = tasks.first else {
+                return DataBaseError.objectWasNotFound
+            }
+            task.setData(from: model)
+        } catch let error {
+            return error
+        }
+        return dataBase.saveContext()
     }
     
-    func save(project: Project) -> Error? {
-        return nil
+    func save(project model: ProjectModel) -> Error? {
+        let predicate = predicateFactory.predicate(id: model.id)
+        let result = fetch(projects: predicate)
+        do {
+            let projects = try result.get()
+            guard let project = projects.first else {
+                return DataBaseError.objectWasNotFound
+            }
+            project.setData(from: model)
+        } catch let error {
+            return error
+        }
+        return dataBase.saveContext()
     }
     
-    func delete(tasks: [Int]) -> Error? {
-        return nil
+    func delete(task id: UUID) -> Error? {
+        let predicate = predicateFactory.predicate(id: id)
+        let result = fetch(tasks: predicate)
+        switch result {
+        case .success(let objects):
+            guard let task = objects.first else {
+                return DataBaseError.objectWasNotFound
+            }
+            dataBase.context.delete(task)
+            return nil
+        case .failure(let error):
+            return error
+        }
     }
     
-    func delete(projects: [Int]) -> Error? {
-        return nil
+    func delete(project id: UUID) -> Error? {
+        let predicate = predicateFactory.predicate(id: id)
+        let result = fetch(projects: predicate)
+        switch result {
+        case .success(let objects):
+            guard let project = objects.first else {
+                return DataBaseError.objectWasNotFound
+            }
+            dataBase.context.delete(project)
+            return nil
+        case .failure(let error):
+            return error
+        }
     }
 
 }

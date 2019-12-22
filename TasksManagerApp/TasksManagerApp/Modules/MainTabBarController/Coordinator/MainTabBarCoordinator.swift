@@ -45,8 +45,7 @@ class MainTabBarCoordinator: BaseCoordinator {
             self?.showNextModule(projectsController)
         }
         tabBarController.toAnalytic = { [weak self] in
-            self?.showNextModule(analyticController)
-            
+            self?.showNextModule(analyticController)            
         }
         setAsRoot(tabBarController)
         self.tabBarController = tabBarController
@@ -55,13 +54,14 @@ class MainTabBarCoordinator: BaseCoordinator {
     /// Запускает координатор контроллера, который был нажат в табБаре.
     private func showNextModule(_ controller: UIViewController) {
         
+        // swiftlint:disable force_cast
         switch controller {
         case controller as TasksView:
             tabBarCoordinator = TasksCoordinator(controller)
         case controller as ProjectsView:
             tabBarCoordinator = ProjectsCoordinator(controller)
-        case controller as AnalyticView:
-            tabBarCoordinator = AnalyticCoordinator(controller)
+        case controller as AnalyticView:            
+            tabBarCoordinator = AnalyticCoordinator(controller as! AnalyticView)
         default:
             break
         }

@@ -12,25 +12,41 @@ class AnalyticCoordinator: BaseCoordinator {
     
     // MARK: - Private properties
     
-    private let controller: UIViewController
+    private let controller: AnalyticView
     
     // MARK: - Init
     
-    init(_ controller: UIViewController) {
+    init(_ controller: AnalyticView) {
         self.controller = controller
     }
     
     // MARK: - Puplic methods
     
     override func start() {
-        controller.tabBarController?.selectedIndex = controller.tabBarItem.tag
+        showAnalyticModule()
     }
     
     // MARK: - Private methods
     
     private func showAnalyticModule() {
+        controller.tabBarController?.selectedIndex = controller.tabBarItem.tag
         
+        // FIXME: - Убрать! Оставил потому, что нужна кнопка пререхода на форму.
+        controller.onTaskForm = { [weak self] in
+            guard  let self = self else { return }
+            let coordinator = TaskFormCoordinator(
+                parentController: self.controller,
+                task: nil
+            )
+            coordinator.onFinishFlow = { [weak self, weak coordinator] (message) in
+                print(message ?? "")
+                self?.removeDependency(coordinator)
+                self?.start()
+                
+            }
+            self.addDependency(coordinator)
+            coordinator.start()
+        }
     }
-
 
 }
