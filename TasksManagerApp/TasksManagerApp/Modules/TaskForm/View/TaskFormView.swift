@@ -136,8 +136,6 @@ class TaskFormView: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
-    // Вью содержащая весь контент
-    private let contentView = UIView()
     
     lazy var leftStackViews = [
         dateFromTitleLabel,
@@ -177,6 +175,7 @@ class TaskFormView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerForKeyboardNotification()
         configure()
     }
     
@@ -201,9 +200,7 @@ class TaskFormView: UIViewController {
     
     private func addViews() {
         view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        subViews.forEach { contentView.addSubview($0) }
+        subViews.forEach { scrollView.addSubview($0) }
         leftStackViews.forEach { leftStackView.addArrangedSubview($0) }
         rightStackViews.forEach { rightStackView.addArrangedSubview($0) }
     }
@@ -212,54 +209,37 @@ class TaskFormView: UIViewController {
         buttonsStackView.delegate = self
     }
     
-    var heightContentViewConstraint = NSLayoutConstraint()
-    
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
-        
-        heightContentViewConstraint = scrollView.heightAnchor.constraint(equalTo: safeArea.heightAnchor)
-        heightContentViewConstraint.priority = UILayoutPriority(999)
-        heightContentViewConstraint.isActive = true
         
         NSLayoutConstraint.activate([
             scrollView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
             scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             scrollView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            
-            contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            
-            
-            contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
-            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            //contentView.heightAnchor.constraint(equalTo: safeArea.heightAnchor),
-            contentView.widthAnchor.constraint(equalTo: safeArea.widthAnchor)
+            scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            titleScreenLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            titleScreenLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16.0),
-            titleScreenLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            titleScreenLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            titleScreenLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            titleScreenLabel.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
+            titleScreenLabel.heightAnchor.constraint(equalToConstant: 30.0),
 
             leftStackView.widthAnchor.constraint(equalToConstant: 100.0),
-            leftStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            leftStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor, constant: 16.0),
-            leftStackView.heightAnchor.constraint(equalToConstant: 500.0),
+            leftStackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            leftStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor, constant: 60.0),
+            leftStackView.heightAnchor.constraint(equalToConstant: 360.0),
 
-            rightStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor),
-            rightStackView.leftAnchor.constraint(equalTo: leftStackView.rightAnchor),
+            rightStackView.topAnchor.constraint(equalTo: leftStackView.topAnchor),
+            rightStackView.leftAnchor.constraint(equalTo: leftStackView.rightAnchor, constant: 8.0),
             rightStackView.heightAnchor.constraint(equalTo: leftStackView.heightAnchor),
-            rightStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            rightStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16.0),
 
-            buttonsStackView.heightAnchor.constraint(equalToConstant: 100.0),
-            buttonsStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            buttonsStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            buttonsStackView.topAnchor.constraint(greaterThanOrEqualTo: leftStackView.bottomAnchor),
-            buttonsStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            buttonsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            buttonsStackView.heightAnchor.constraint(equalToConstant: 120.0),
+            buttonsStackView.topAnchor.constraint(equalTo: leftStackView.bottomAnchor),
+            buttonsStackView.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
+            buttonsStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            buttonsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
         ])
     }
     
@@ -320,10 +300,10 @@ extension TaskFormView {
         // swiftlint:disable force_cast
         let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue)
             .cgRectValue
-        heightContentViewConstraint.constant = kbFrameSize.height
+        scrollView.contentInset.bottom = kbFrameSize.height
     }
     
     @objc func kbWillHide(_ notification: Notification) {
-        scrollView.contentOffset = CGPoint.zero
+        scrollView.contentInset.bottom = .zero
     }
 }
