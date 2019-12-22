@@ -30,6 +30,8 @@ class AnalyticCoordinator: BaseCoordinator {
     
     private func showAnalyticModule() {
         controller.tabBarController?.selectedIndex = controller.tabBarItem.tag
+        
+        // FIXME: - Убрать! Оставил потому, что нужна кнопка пререхода на форму.
         controller.onTaskForm = { [weak self] in
             guard  let self = self else { return }
             let coordinator = TaskFormCoordinator(

@@ -16,6 +16,8 @@ class AnalyticView: UIViewController {
 
     // MARK: - Private properties
     
+    // FIXME: - Убрать! Оставил потому, что нужна кнопка пререхода на форму.
+    
     let addTaskButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false

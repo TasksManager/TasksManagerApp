@@ -45,13 +45,13 @@ extension TaskFormPresenter: TaskFormViewOutput {
     }
     
     func didEdit(data: TaskModel) {
-        guard let task = self.task else { return }
-        task.setData(from: data)
-        if let error = dbManager.save(task: task) {
-            viewInput?.show(message: error.localizedDescription)
-        } else {
-            viewInput?.close(message: "Saved!")
-        }
+//        guard let task = self.task else { return }
+//        task.setData(from: data)
+//        if let error = dbManager.save() {
+//            viewInput?.show(message: error.localizedDescription)
+//        } else {
+//            viewInput?.close(message: "Saved!")
+//        }
     }
     
 }
