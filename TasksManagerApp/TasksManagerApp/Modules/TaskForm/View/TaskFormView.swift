@@ -33,6 +33,7 @@ class TaskFormView: UIViewController {
     // Начальная дата.
     private let dateFromLabel: UILabel = {
         let label = UILabel()
+        label.text = "date"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -46,6 +47,7 @@ class TaskFormView: UIViewController {
     // Конечная дата.
     private let dateToLabel: UILabel = {
         let label = UILabel()
+        label.text = "date"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -59,6 +61,7 @@ class TaskFormView: UIViewController {
     // Тайтл.
     private let titleTextField: UITextField = {
         let textField = UITextField()
+        textField.backgroundColor = .green
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -72,6 +75,7 @@ class TaskFormView: UIViewController {
     // Описание.
     private let descriptionTextField: UITextField = {
         let textField = UITextField()
+        textField.backgroundColor = .orange
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -85,6 +89,7 @@ class TaskFormView: UIViewController {
     // Проект.
     private let projectLabel: UILabel = {
         let label = UILabel()
+        label.text = "project"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -98,22 +103,23 @@ class TaskFormView: UIViewController {
     // Цвет.
     private let colorLabel: UILabel = {
         let label = UILabel()
+        label.text = "color"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     // Левый стек.
     private let leftStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = .red
         stackView.axis = .vertical
+        stackView.distribution = .equalCentering
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     // Правый стек.
     private let rightStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = .green
         stackView.axis = .vertical
+        stackView.distribution = .equalCentering
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -206,12 +212,12 @@ class TaskFormView: UIViewController {
         buttonsStackView.delegate = self
     }
     
+    var heightContentViewConstraint = NSLayoutConstraint()
     
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
-        // в этом констрейнте вся магия скрола на экране.
-        let heightContentViewConstraint = scrollView.heightAnchor.constraint(equalTo: safeArea.heightAnchor)
+        heightContentViewConstraint = scrollView.heightAnchor.constraint(equalTo: safeArea.heightAnchor)
         heightContentViewConstraint.priority = UILayoutPriority(999)
         heightContentViewConstraint.isActive = true
         
@@ -225,6 +231,11 @@ class TaskFormView: UIViewController {
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            
+            
+            contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            //contentView.heightAnchor.constraint(equalTo: safeArea.heightAnchor),
             contentView.widthAnchor.constraint(equalTo: safeArea.widthAnchor)
         ])
 
@@ -236,6 +247,7 @@ class TaskFormView: UIViewController {
             leftStackView.widthAnchor.constraint(equalToConstant: 100.0),
             leftStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             leftStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor, constant: 16.0),
+            leftStackView.heightAnchor.constraint(equalToConstant: 500.0),
 
             rightStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor),
             rightStackView.leftAnchor.constraint(equalTo: leftStackView.rightAnchor),
@@ -245,7 +257,7 @@ class TaskFormView: UIViewController {
             buttonsStackView.heightAnchor.constraint(equalToConstant: 100.0),
             buttonsStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             buttonsStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            buttonsStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor, constant: 800.0),
+            buttonsStackView.topAnchor.constraint(greaterThanOrEqualTo: leftStackView.bottomAnchor),
             buttonsStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             buttonsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
@@ -308,7 +320,7 @@ extension TaskFormView {
         // swiftlint:disable force_cast
         let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue)
             .cgRectValue
-        scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
+        heightContentViewConstraint.constant = kbFrameSize.height
     }
     
     @objc func kbWillHide(_ notification: Notification) {
