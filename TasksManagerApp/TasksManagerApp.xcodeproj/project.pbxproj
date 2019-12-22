@@ -30,6 +30,8 @@
 		94210C0F239E20F300A64061 /* TaskFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C0E239E20F300A64061 /* TaskFormView.swift */; };
 		94210C11239E228200A64061 /* ViewsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C10239E228200A64061 /* ViewsFactory.swift */; };
 		94210C13239E231600A64061 /* AnalyticViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C12239E231600A64061 /* AnalyticViewInput.swift */; };
+		942294A723AF2FDF00964320 /* DataBaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942294A623AF2FDF00964320 /* DataBaseError.swift */; };
+		942294A923AF4DD600964320 /* BrokenRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942294A823AF4DD600964320 /* BrokenRule.swift */; };
 		9423AD1323A1E18D00E27AFA /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD1223A1E18D00E27AFA /* TaskModel.swift */; };
 		9423AD1523A1E2B800E27AFA /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD1423A1E2B800E27AFA /* ProjectModel.swift */; };
 		9423AD1B23A1E40900E27AFA /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423AD1723A1E40900E27AFA /* Project+CoreDataClass.swift */; };
@@ -47,6 +49,7 @@
 		942D0BB923A7BA3A006AC48A /* TaskFormCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */; };
 		94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */; };
 		94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */; };
+		94ECB7E123AA997400E221A2 /* SaveCancelButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */; };
 		94EEEFB3239CB3B6000D077C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFB2239CB3B6000D077C /* AppDelegate.swift */; };
 		94EEEFBB239CB416000D077C /* TasksManagerApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFB9239CB416000D077C /* TasksManagerApp.xcdatamodeld */; };
 		94EEEFC3239CFCEA000D077C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFC2239CFCEA000D077C /* MainTabBarController.swift */; };
@@ -82,6 +85,8 @@
 		94210C0E239E20F300A64061 /* TaskFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormView.swift; sourceTree = "<group>"; };
 		94210C10239E228200A64061 /* ViewsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsFactory.swift; sourceTree = "<group>"; };
 		94210C12239E231600A64061 /* AnalyticViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewInput.swift; sourceTree = "<group>"; };
+		942294A623AF2FDF00964320 /* DataBaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseError.swift; sourceTree = "<group>"; };
+		942294A823AF4DD600964320 /* BrokenRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenRule.swift; sourceTree = "<group>"; };
 		9423AD1223A1E18D00E27AFA /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		9423AD1423A1E2B800E27AFA /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		9423AD1723A1E40900E27AFA /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -99,6 +104,7 @@
 		942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormCoordinator.swift; sourceTree = "<group>"; };
 		94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticPresenter.swift; sourceTree = "<group>"; };
 		94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewOutput.swift; sourceTree = "<group>"; };
+		94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCancelButtons.swift; sourceTree = "<group>"; };
 		94EEEFB2239CB3B6000D077C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94EEEFBA239CB416000D077C /* TasksManagerApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TasksManagerApp.xcdatamodel; sourceTree = "<group>"; };
 		94EEEFBE239CB6B0000D077C /* TasksManagerApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TasksManagerApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -152,6 +158,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		942294A323AF2D2700964320 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				942294A623AF2FDF00964320 /* DataBaseError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		9423AD0823A1E06E00E27AFA /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,12 +205,22 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
+		94ECB7DF23AA991500E221A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		94EEEFB6239CB3CF000D077C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				4685DDF723A6069A00B34FD0 /* Extensions */,
 				9423AD2423A1EB4400E27AFA /* DataBase */,
+				4685DDF723A6069A00B34FD0 /* Extensions */,
+				942294A323AF2D2700964320 /* Errors */,
 				94EEEFCF239D061E000D077C /* BaseCoordinator.swift */,
+				942294A823AF4DD600964320 /* BrokenRule.swift */,
 				9423AD2923A1F5F000E27AFA /* DateManager.swift */,
 			);
 			path = Core;
@@ -390,6 +414,7 @@
 		94EEEFE8239D6F29000D077C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				94ECB7DF23AA991500E221A2 /* Views */,
 				94210C0E239E20F300A64061 /* TaskFormView.swift */,
 				942D0BB223A7BA02006AC48A /* TaskFormViewOutput.swift */,
 			);
@@ -469,9 +494,9 @@
 				94EEEFBE239CB6B0000D077C /* TasksManagerApp-Bridging-Header.h */,
 				9423AD0823A1E06E00E27AFA /* App */,
 				94EEEFD7239D68ED000D077C /* Assemblage */,
+				94EEEFB6239CB3CF000D077C /* Core */,
 				94EEEFEB239D713D000D077C /* Entrance */,
 				94EEEFC4239D00A2000D077C /* Modules */,
-				94EEEFB6239CB3CF000D077C /* Core */,
 				94EEEFBD239CB5B5000D077C /* Resources */,
 				94EEEFBC239CB58F000D077C /* Environments */,
 			);
@@ -583,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9423AD1523A1E2B800E27AFA /* ProjectModel.swift in Sources */,
+				94ECB7E123AA997400E221A2 /* SaveCancelButtons.swift in Sources */,
 				4685DDF923A606ED00B34FD0 /* UIColor+Extensions.swift in Sources */,
 				94EEEFD0239D061E000D077C /* BaseCoordinator.swift in Sources */,
 				94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */,
@@ -593,6 +619,7 @@
 				94EEEFF6239D7D61000D077C /* MainTabBarCoordinator.swift in Sources */,
 				9423AD1323A1E18D00E27AFA /* TaskModel.swift in Sources */,
 				94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */,
+				942294A723AF2FDF00964320 /* DataBaseError.swift in Sources */,
 				9423AD2A23A1F5F000E27AFA /* DateManager.swift in Sources */,
 				9423AD1B23A1E40900E27AFA /* Project+CoreDataClass.swift in Sources */,
 				9423AD1D23A1E40900E27AFA /* Task+CoreDataClass.swift in Sources */,
@@ -612,6 +639,7 @@
 				9423AD2823A1F5CF00E27AFA /* PredicateFactory.swift in Sources */,
 				94EEEFED239D7194000D077C /* AppCoordinator.swift in Sources */,
 				942D0BB623A7BA27006AC48A /* TaskFormPresenter.swift in Sources */,
+				942294A923AF4DD600964320 /* BrokenRule.swift in Sources */,
 				94210C07239E201500A64061 /* AnalyticView.swift in Sources */,
 				94210C13239E231600A64061 /* AnalyticViewInput.swift in Sources */,
 				94EEEFB3239CB3B6000D077C /* AppDelegate.swift in Sources */,

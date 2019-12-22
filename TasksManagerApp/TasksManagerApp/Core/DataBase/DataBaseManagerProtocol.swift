@@ -12,11 +12,11 @@ protocol DataBaseManagerProtocol {
     
     func add(task model: TaskModel) -> Error?
     func add(project model: ProjectModel) -> Error?
-    func fetchTasks(by: NSPredicate) -> Result<[Task], Error>
-    func fetchProjects(by: NSPredicate) -> Result<[Project], Error>
-    func save(task: Task) -> Error?
-    func save(project: Project) -> Error?
-    func delete(tasks: [Int]) -> Error?
-    func delete(projects: [Int]) -> Error?
+    func fetch(tasks by: NSPredicate) -> Result<[Task], Error>
+    func fetch(projects by: NSPredicate) -> Result<[Project], Error>
+    func save(task model: TaskModel) -> Error?
+    func save(project model: ProjectModel) -> Error?
+    func delete(task id: UUID) -> Error?
+    func delete(project id: UUID) -> Error?
     
 }

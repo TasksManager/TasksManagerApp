@@ -31,8 +31,8 @@ extension Task {
     
     func setData(from model: TaskModel) {
         self.id = model.id
-        self.dateFrom = model.dateFrom
-        self.dateTo = model.dateTo
+        self.dateFrom = model.dates.dateFrom
+        self.dateTo = model.dates.dateTo
         self.title = model.title
         self.body = model.body
         self.isComplete = model.isComplete as NSNumber
