@@ -12,4 +12,6 @@ protocol ProjectsViewOutput {
     func deleteProject(index: Int)
     func getDate() -> String
     func getProject(index: Int) -> Project?
+    func getProjects()
+    func getFilteredProject(request: String)
 }

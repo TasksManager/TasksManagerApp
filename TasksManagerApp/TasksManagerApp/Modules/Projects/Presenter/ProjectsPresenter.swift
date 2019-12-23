@@ -18,12 +18,12 @@ final class ProjectsPresenter {
     let dbManager = DataBaseManager.instance
     let predicate = NSPredicate(value: true)
     var arrayProjects: [Project]?
+//    var filteredArrayProjects: [Project] = []
     // MARK: - Public properties
     // MARK: - Private properties
     // MARK: - Init
     // MARK: - Lifecycle ViewController
     // MARK: - Puplic methods
-    
     func deleteProject(index: Int) {
         guard let project = arrayProjects?[index] else { return }
         dbManager.deleteProject(project: project)
@@ -35,7 +35,18 @@ final class ProjectsPresenter {
     }
     
     func getProjects() {
-        let projects = dbManager.fetchProjects(by: predicate)
+        let projects = dbManager.fetch(projects: predicate)
+        do {
+            arrayProjects = try projects.get()
+        } catch {
+            arrayProjects = nil
+        }
+    }
+    
+    func getFilteredProject(request: String) {
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", request)
+        let projects = dbManager.fetch(projects: predicate)
+        arrayProjects?.removeAll()
         do {
             arrayProjects = try projects.get()
         } catch {
@@ -44,7 +55,6 @@ final class ProjectsPresenter {
     }
     
     func getCountProjects() -> Int {
-        getProjects()
         return arrayProjects?.count ?? 0
     }
     

@@ -51,8 +51,10 @@ class ProjectFormView: UIViewController, UIScrollViewDelegate {
         setupProjectNameTextField()
         setupProjectColorTextField()
         setupSaveButton()
+        viewOutput.didAppear()
         
-        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        let hideKeyboardGesture = UITapGestureRecognizer(target: self,
+                                                         action: #selector(hideKeyboard))
         mainView.addGestureRecognizer(hideKeyboardGesture)
         
         NotificationCenter.default.addObserver(self,
@@ -68,7 +70,6 @@ class ProjectFormView: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewOutput.didAppear()
     }
     
     // MARK: - Puplic methods
@@ -79,9 +80,6 @@ class ProjectFormView: UIViewController, UIScrollViewDelegate {
         backButton.titleLabel?.textColor = .tmaWhiteColor
         backButton.setTitle("〈 Back", for: .normal)
         view.addSubview(backButton)
-        
-        backButton.isAccessibilityElement = true
-        backButton.accessibilityIdentifier = "backButton"
         
         backButton.translatesAutoresizingMaskIntoConstraints = false
         let topConstraint = backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5)
@@ -176,6 +174,11 @@ class ProjectFormView: UIViewController, UIScrollViewDelegate {
         projectNameTextField.font = .systemFontOfSize(size: 16)
         projectNameTextField.textColor = .tmaGrayColor
         projectNameTextField.placeholder = "Input title for project"
+        projectNameTextField.leftView = UIView(frame: CGRect(x: 0,
+                                                             y: 0,
+                                                             width: 5,
+                                                             height: projectNameTextField.frame.height))
+        projectNameTextField.leftViewMode = .always
         mainView.addSubview(projectNameTextField)
         
         projectNameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -197,6 +200,11 @@ class ProjectFormView: UIViewController, UIScrollViewDelegate {
         projectColorTextField.font = .systemFontOfSize(size: 16)
         projectColorTextField.textColor = .tmaGrayColor
         projectColorTextField.placeholder = "Input color for project"
+        projectColorTextField.leftView = UIView(frame: CGRect(x: 0,
+                                                             y: 0,
+                                                             width: 5,
+                                                             height: projectColorTextField.frame.height))
+        projectColorTextField.leftViewMode = .always
         mainView.addSubview(projectColorTextField)
         
         projectColorTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -258,8 +266,12 @@ class ProjectFormView: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func keyboardWasShown​(notification: Notification) {
-        let info = notification.userInfo! as NSDictionary
-        let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
+        guard let info = notification.userInfo else {
+            assertionFailure()
+            return
+        }
+        //swiftlint:disable force_cast
+        let kbSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.size
         let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
         keyboardHeight = kbSize.height
         scrollView.contentInset = contentInsets

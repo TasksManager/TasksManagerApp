@@ -14,12 +14,13 @@ enum Period: String {
 }
 
 struct PredicateFactory {
-
+    
     // MARK: - Constants
     
     let dataManager = DateManager()
     let periodFormat = "(date >= %@) AND (date <= %@)"
-
+    let idFormat = "%K == %@"
+    
     // MARK: - Puplic methods
     
     /// Возвращает предикат за период.
@@ -29,9 +30,9 @@ struct PredicateFactory {
     func predicate(endDay: Date, period: Period) -> NSPredicate? {
         
         guard let days = Int(period.rawValue),
-              let startDay = dataManager.date(from: endDay, plus: days) else {
-            assertionFailure()
-            return nil
+            let startDay = dataManager.date(from: endDay, plus: days) else {
+                assertionFailure()
+                return nil
         }
         return NSPredicate(format: periodFormat, startDay as NSDate, endDay as NSDate)
     }
@@ -42,6 +43,16 @@ struct PredicateFactory {
     ///   - startDay: Начальная дата.
     func predicate(endDay: Date, startDay: Date) -> NSPredicate {
         return NSPredicate(format: periodFormat, startDay as NSDate, endDay as NSDate)
+    }
+    
+    /// Возвращает предикат для id.
+    /// - Parameter id: идентификатор объекта.
+    func predicate(id: UUID) -> NSPredicate {
+        return NSPredicate(format: "%K == %@", "id", id as CVarArg)
+    }
+    
+    func predicate(q: String) -> NSPredicate {
+        return NSPredicate(format: "title == %@", q)
     }
     
 }

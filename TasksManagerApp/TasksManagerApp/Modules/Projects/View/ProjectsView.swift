@@ -20,7 +20,9 @@ class ProjectsView: UIViewController {
     private let tableView = UITableView(frame: CGRect.zero, style: .plain)
     private let topViewLabel = UILabel()
     private let addButton = UIButton()
-    private let searchBar = UISearchBar()
+    private let searchController = UISearchController(searchResultsController: nil)
+//    private var searchActive: Bool = false
+    private var searchBar = UISearchBar()
     
     private let topViewHeight: CGFloat = 30
     private let searchBarHeight: CGFloat = 50
@@ -39,11 +41,15 @@ class ProjectsView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .tmaColor
+        searchBar = searchController.searchBar
         setupTopView()
         setupSearchBar()
         setupTableView()
         setupTopViewLabel()
         setupAddButton()
+        viewOutput.getProjects()
+//        tableView.tableHeaderView = searchController.searchBar
+        searchBar.backgroundColor = .red
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,13 +105,17 @@ class ProjectsView: UIViewController {
     }
     
     private func setupSearchBar() {
-        view.addSubview(searchBar)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Type something here to search"
+        view.addSubview(searchController.searchBar)
         
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        let topConstraint = searchBar.topAnchor.constraint(equalTo: topView.bottomAnchor)
-        let leadingConstraint = searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        let widthConstraint = searchBar.widthAnchor.constraint(equalToConstant: width)
-        let heightConstraint = searchBar.heightAnchor.constraint(equalToConstant: searchBarHeight)
+        searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
+        let topConstraint = searchController.searchBar.topAnchor.constraint(equalTo: topView.bottomAnchor)
+        let leadingConstraint = searchController.searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let widthConstraint = searchController.searchBar.widthAnchor.constraint(equalToConstant: width)
+        let heightConstraint = searchController.searchBar.heightAnchor.constraint(equalToConstant: searchBarHeight)
         view.addConstraints([topConstraint, leadingConstraint, widthConstraint, heightConstraint])
     }
     
@@ -118,7 +128,7 @@ class ProjectsView: UIViewController {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         let tableViewHeight = height - topViewHeight - searchBarHeight
-        let topConstraint = tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor)
+        let topConstraint = tableView.topAnchor.constraint(equalTo: searchController.searchBar.bottomAnchor)
         let leadingConstraint = tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         let widthConstraint = tableView.widthAnchor.constraint(equalToConstant: width)
         let heightConstraint = tableView.heightAnchor.constraint(equalToConstant: tableViewHeight)
@@ -132,12 +142,22 @@ class ProjectsView: UIViewController {
     // MARK: - Buttons methods
     // MARK: - Navigation
     var onProjectForm: ((Project?) -> Void)?
-
-}
-
-extension ProjectsView: UITableViewDelegate {
     
+    // MARK: - Search Bar
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            viewOutput.getProjects()
+            tableView.reloadData()
+            return
+        }
+        viewOutput.getFilteredProject(request: text)
+        tableView.reloadData()
+        print(text)
+    }
+
 }
+
+extension ProjectsView: UITableViewDelegate {}
 
 extension ProjectsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -185,3 +205,7 @@ extension ProjectsView: UITableViewDataSource {
 }
 
 extension ProjectsView: ProjectsViewInput {}
+
+extension ProjectsView: UISearchBarDelegate {}
+
+extension ProjectsView: UISearchResultsUpdating {}

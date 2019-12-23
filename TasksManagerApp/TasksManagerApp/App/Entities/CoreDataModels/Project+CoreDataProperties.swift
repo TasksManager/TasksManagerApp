@@ -43,8 +43,7 @@ extension Project {
 
 extension Project {
     
-    func addData(from model: ProjectModel) {
-        
+    func setData(from model: ProjectModel) {
         self.id = model.id
         self.title = model.title
         self.color = model.color

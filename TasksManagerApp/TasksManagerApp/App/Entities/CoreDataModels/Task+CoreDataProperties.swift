@@ -29,7 +29,7 @@ extension Task {
 
 extension Task {
     
-    func addData(from model: TaskModel) {
+    func setData(from model: TaskModel) {
         self.id = model.id
         self.dateFrom = model.dateFrom
         self.dateTo = model.dateTo

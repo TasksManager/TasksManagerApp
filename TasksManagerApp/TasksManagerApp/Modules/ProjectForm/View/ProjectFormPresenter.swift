@@ -29,12 +29,20 @@ final class ProjectFormPresenter {
     // MARK: - Lifecycle ViewController
     // MARK: - Puplic methods
     func addProject(title: String, color: String) {
-        let projectModel = ProjectModel(id: UUID(), title: title, color: color, tasks: nil)
-        if project == nil {
+        guard let project = self.project else {
+            let projectModel = ProjectModel(id: UUID(),
+                                            title: title,
+                                            color: color,
+                                            tasks: nil)
             didCraft(data: projectModel)
-        } else {
-            didEdit(data: projectModel)
+            return
         }
+        
+        let projectModel = ProjectModel(id: project.id,
+                                        title: title,
+                                        color: color,
+                                        tasks: project.tasks as? Set<Task>)
+        didEdit(data: projectModel)
     }
 
     // MARK: - Private methods
@@ -57,9 +65,7 @@ extension ProjectFormPresenter: ProjectFormViewOutput {
     }
     
     func didEdit(data: ProjectModel) {
-        guard let project = self.project else { return }
-        project.addData(from: data)
-        if let error = dbManager.save(project: project) {
+        if let error = dbManager.save(project: data) {
             viewInput?.show(message: error.localizedDescription)
         } else {
             viewInput?.close(message: "Saved!")

@@ -25,6 +25,8 @@
 		46F87E6523A7D94F0095264E /* ProjectsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E6423A7D94F0095264E /* ProjectsViewOutput.swift */; };
 		46F87E6723A7D95A0095264E /* ProjectsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E6623A7D95A0095264E /* ProjectsViewInput.swift */; };
 		46F87E6923A7D96E0095264E /* ProjectsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E6823A7D96E0095264E /* ProjectsViewCell.swift */; };
+		46F87E6B23AFA2090095264E /* BrokenRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E6A23AFA2090095264E /* BrokenRule.swift */; };
+		46F87E6E23AFA3780095264E /* DataBaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E6D23AFA3780095264E /* DataBaseError.swift */; };
 		94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C00239E162800A64061 /* ProjectsCoordinator.swift */; };
 		94210C03239E166900A64061 /* TasksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C02239E166900A64061 /* TasksCoordinator.swift */; };
 		94210C07239E201500A64061 /* AnalyticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C06239E201500A64061 /* AnalyticView.swift */; };
@@ -81,6 +83,8 @@
 		46F87E6423A7D94F0095264E /* ProjectsViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewOutput.swift; sourceTree = "<group>"; };
 		46F87E6623A7D95A0095264E /* ProjectsViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewInput.swift; sourceTree = "<group>"; };
 		46F87E6823A7D96E0095264E /* ProjectsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewCell.swift; sourceTree = "<group>"; };
+		46F87E6A23AFA2090095264E /* BrokenRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenRule.swift; sourceTree = "<group>"; };
+		46F87E6D23AFA3780095264E /* DataBaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseError.swift; sourceTree = "<group>"; };
 		94210C00239E162800A64061 /* ProjectsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCoordinator.swift; sourceTree = "<group>"; };
 		94210C02239E166900A64061 /* TasksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCoordinator.swift; sourceTree = "<group>"; };
 		94210C06239E201500A64061 /* AnalyticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticView.swift; sourceTree = "<group>"; };
@@ -160,6 +164,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		46F87E6C23AFA3680095264E /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				46F87E6D23AFA3780095264E /* DataBaseError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		9423AD0823A1E06E00E27AFA /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,10 +214,12 @@
 		94EEEFB6239CB3CF000D077C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				46F87E6C23AFA3680095264E /* Errors */,
 				4685DDF723A6069A00B34FD0 /* Extensions */,
 				9423AD2423A1EB4400E27AFA /* DataBase */,
 				94EEEFCF239D061E000D077C /* BaseCoordinator.swift */,
 				9423AD2923A1F5F000E27AFA /* DateManager.swift */,
+				46F87E6A23AFA2090095264E /* BrokenRule.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -598,6 +612,7 @@
 				C48F15B223A9E0F5002D04E3 /* ProjectFormViewInput.swift in Sources */,
 				9423AD1523A1E2B800E27AFA /* ProjectModel.swift in Sources */,
 				4685DDF923A606ED00B34FD0 /* UIColor+Extensions.swift in Sources */,
+				46F87E6E23AFA3780095264E /* DataBaseError.swift in Sources */,
 				94EEEFD0239D061E000D077C /* BaseCoordinator.swift in Sources */,
 				94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */,
 				94210C11239E228200A64061 /* ViewsFactory.swift in Sources */,
@@ -622,6 +637,7 @@
 				94210C0F239E20F300A64061 /* TaskFormView.swift in Sources */,
 				C48F15B423A9E979002D04E3 /* ProjectFormCoordinator.swift in Sources */,
 				9423AD2323A1EAE000E27AFA /* CoreDataStack.swift in Sources */,
+				46F87E6B23AFA2090095264E /* BrokenRule.swift in Sources */,
 				C48F15AE23A9E0B5002D04E3 /* ProjectFormViewOutput.swift in Sources */,
 				94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */,
 				46F87E6523A7D94F0095264E /* ProjectsViewOutput.swift in Sources */,

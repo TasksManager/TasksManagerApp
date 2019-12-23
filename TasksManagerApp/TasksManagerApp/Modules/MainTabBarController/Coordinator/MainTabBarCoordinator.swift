@@ -50,7 +50,7 @@ class MainTabBarCoordinator: BaseCoordinator {
     
     /// Запускает координатор контроллера, который был нажат в табБаре.
     private func showNextModule(_ controller: UIViewController) {
-        
+        //swiftlint:disable force_cast
         switch controller {
         case controller as TasksView:
             tabBarCoordinator = TasksCoordinator(controller)
