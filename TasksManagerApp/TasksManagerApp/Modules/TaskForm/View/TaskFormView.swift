@@ -15,49 +15,21 @@ class TaskFormView: UIViewController {
     
     private let viewOutput: TaskFormViewOutput
     // Название экрана.
-    private let titleScreenLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Task"
+    private let titleScreenLabel: CustomLabel = {
+        let label = CustomLabel(text: "Task")
         label.textAlignment = .center
-        label.backgroundColor = .purple
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     // Название начальной даты.
-    private let dateFromTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "DateFrom: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let dateFromTitleLabel = CustomLabel(text: "DateFrom: ")
     // Начальная дата.
-    private let dateFromLabel: UILabel = {
-        let label = UILabel()
-        label.text = "date"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let dateFromLabel = InteractLable(text: "date", tag: 0)
     // Название конечной даты.
-    private let dateToTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "DateTo: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let dateToTitleLabel = CustomLabel(text: "DateTo: ")
     // Конечная дата.
-    private let dateToLabel: UILabel = {
-        let label = UILabel()
-        label.text = "date"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let dateToLabel = InteractLable(text: "date", tag: 1)
     // Название тайтла.
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Title: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let titleLabel = CustomLabel(text: "Title: ")
     // Тайтл.
     private let titleTextField: UITextField = {
         let textField = UITextField()
@@ -66,12 +38,7 @@ class TaskFormView: UIViewController {
         return textField
     }()
     // Название описания.
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Description: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let descriptionLabel = CustomLabel(text: "Description: ")
     // Описание.
     private let descriptionTextField: UITextField = {
         let textField = UITextField()
@@ -80,33 +47,13 @@ class TaskFormView: UIViewController {
         return textField
     }()
     // Название поля проект.
-    private let projectTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Project: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let projectTitleLabel = CustomLabel(text: "Project: ")
     // Проект.
-    private let projectLabel: UILabel = {
-        let label = UILabel()
-        label.text = "project"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let projectLabel = InteractLable(text: "project", tag: 2)
     // Название поля цвет.
-    private let colorTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Color: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let colorTitleLabel = CustomLabel(text: "Color: ")
     // Цвет.
-    private let colorLabel: UILabel = {
-        let label = UILabel()
-        label.text = "color"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let colorLabel = InteractLable(text: "color", tag: 3)
     // Левый стек.
     private let leftStackView: UIStackView = {
         let stackView = UIStackView()
@@ -136,7 +83,6 @@ class TaskFormView: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
-    
     lazy var leftStackViews = [
         dateFromTitleLabel,
         dateToTitleLabel,
@@ -194,15 +140,16 @@ class TaskFormView: UIViewController {
         setupConstraints()
     }
     
-//    private func configureScrollView() {
-//        scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height + 500.0)
-//    }
-    
     private func addViews() {
         view.addSubview(scrollView)
         subViews.forEach { scrollView.addSubview($0) }
         leftStackViews.forEach { leftStackView.addArrangedSubview($0) }
         rightStackViews.forEach { rightStackView.addArrangedSubview($0) }
+        
+        for view in rightStackViews where view is InteractLable {
+            let recognizer = UITapGestureRecognizer(target: self, action: #selector(tappedOnElement(_:)))
+            view.addGestureRecognizer(recognizer)
+        }
     }
     
     private func assignDelegetes() {
@@ -246,6 +193,25 @@ class TaskFormView: UIViewController {
     // MARK: - Navigation
 
     var onBack: ((String?) -> Void)?
+    
+    // MARK: - Actions
+    
+    @objc private func tappedOnElement(_ sender: UITapGestureRecognizer) {
+        if let view = sender.view, view is InteractLable {
+            switch view.tag {
+            case 0:
+                print("tapped \(view.tag)")
+            case 1:
+                print("tapped \(view.tag)")
+            case 2:
+                print("tapped \(view.tag)")
+            case 3:
+                print("tapped \(view.tag)")
+            default:
+                break
+            }
+        }
+    }
 
 }
 
@@ -277,8 +243,9 @@ extension TaskFormView: SaveCancelButtonsDelegate {
     }
 }
 
+// MARK: - методы управления сдвигом при появлении клавиатуры
+
 extension TaskFormView {
-    // MARK: - методы управления сдвигом при появлении клавиатуры
     func registerForKeyboardNotification() {
         NotificationCenter.default.addObserver(
             self,
