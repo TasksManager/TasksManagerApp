@@ -21,7 +21,6 @@ class ProjectsView: UIViewController {
     private let topViewLabel = UILabel()
     private let addButton = UIButton()
     private let searchController = UISearchController(searchResultsController: nil)
-//    private var searchActive: Bool = false
     private var searchBar = UISearchBar()
     
     private let topViewHeight: CGFloat = 30
@@ -48,8 +47,6 @@ class ProjectsView: UIViewController {
         setupTopViewLabel()
         setupAddButton()
         viewOutput.getProjects()
-//        tableView.tableHeaderView = searchController.searchBar
-        searchBar.backgroundColor = .red
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,14 +106,6 @@ class ProjectsView: UIViewController {
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Type something here to search"
-        view.addSubview(searchController.searchBar)
-        
-        searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
-        let topConstraint = searchController.searchBar.topAnchor.constraint(equalTo: topView.bottomAnchor)
-        let leadingConstraint = searchController.searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        let widthConstraint = searchController.searchBar.widthAnchor.constraint(equalToConstant: width)
-        let heightConstraint = searchController.searchBar.heightAnchor.constraint(equalToConstant: searchBarHeight)
-        view.addConstraints([topConstraint, leadingConstraint, widthConstraint, heightConstraint])
     }
     
     private func setupTableView() {
@@ -125,10 +114,11 @@ class ProjectsView: UIViewController {
         tableView.backgroundColor = .tmaWhiteColor
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableHeaderView = searchController.searchBar
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         let tableViewHeight = height - topViewHeight - searchBarHeight
-        let topConstraint = tableView.topAnchor.constraint(equalTo: searchController.searchBar.bottomAnchor)
+        let topConstraint = tableView.topAnchor.constraint(equalTo: topView.bottomAnchor)
         let leadingConstraint = tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         let widthConstraint = tableView.widthAnchor.constraint(equalToConstant: width)
         let heightConstraint = tableView.heightAnchor.constraint(equalToConstant: tableViewHeight)
@@ -142,18 +132,6 @@ class ProjectsView: UIViewController {
     // MARK: - Buttons methods
     // MARK: - Navigation
     var onProjectForm: ((Project?) -> Void)?
-    
-    // MARK: - Search Bar
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else {
-            viewOutput.getProjects()
-            tableView.reloadData()
-            return
-        }
-        viewOutput.getFilteredProject(request: text)
-        tableView.reloadData()
-        print(text)
-    }
 
 }
 
@@ -208,4 +186,17 @@ extension ProjectsView: ProjectsViewInput {}
 
 extension ProjectsView: UISearchBarDelegate {}
 
-extension ProjectsView: UISearchResultsUpdating {}
+extension ProjectsView: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        if text == "" {
+            viewOutput.getProjects()
+            tableView.reloadData()
+        } else {
+            viewOutput.getFilteredProject(request: text)
+            tableView.reloadData()
+        }
+    }
+    
+}
