@@ -47,6 +47,7 @@
 		942D0BB623A7BA27006AC48A /* TaskFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB423A7BA27006AC48A /* TaskFormPresenter.swift */; };
 		942D0BB723A7BA27006AC48A /* TaskFormViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB523A7BA27006AC48A /* TaskFormViewInput.swift */; };
 		942D0BB923A7BA3A006AC48A /* TaskFormCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */; };
+		948F582523B1C29D00701FFD /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948F582423B1C29D00701FFD /* CustomDatePicker.swift */; };
 		94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */; };
 		94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */; };
 		94ECB7E123AA997400E221A2 /* SaveCancelButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */; };
@@ -104,6 +105,7 @@
 		942D0BB423A7BA27006AC48A /* TaskFormPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormPresenter.swift; sourceTree = "<group>"; };
 		942D0BB523A7BA27006AC48A /* TaskFormViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormViewInput.swift; sourceTree = "<group>"; };
 		942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormCoordinator.swift; sourceTree = "<group>"; };
+		948F582423B1C29D00701FFD /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticPresenter.swift; sourceTree = "<group>"; };
 		94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewOutput.swift; sourceTree = "<group>"; };
 		94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCancelButtons.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */,
 				94F8F48823AFCAE000FDF7C4 /* InteractLable.swift */,
 				94F8F48A23AFDBC600FDF7C4 /* CustomLabel.swift */,
+				948F582423B1C29D00701FFD /* CustomDatePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				4685DDF923A606ED00B34FD0 /* UIColor+Extensions.swift in Sources */,
 				94EEEFD0239D061E000D077C /* BaseCoordinator.swift in Sources */,
 				94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */,
+				948F582523B1C29D00701FFD /* CustomDatePicker.swift in Sources */,
 				942D0BB723A7BA27006AC48A /* TaskFormViewInput.swift in Sources */,
 				94210C11239E228200A64061 /* ViewsFactory.swift in Sources */,
 				94EEF006239D9591000D077C /* AnalyticCoordinator.swift in Sources */,

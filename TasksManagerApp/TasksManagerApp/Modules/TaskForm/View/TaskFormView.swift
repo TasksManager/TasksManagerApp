@@ -10,6 +10,10 @@ import UIKit
 
 /// Форма редактирования задачи.
 class TaskFormView: UIViewController {
+
+    // MARK: - Constants
+
+    let dateManager = DateManager()
     
     // MARK: - Private properties
     
@@ -106,6 +110,22 @@ class TaskFormView: UIViewController {
         buttonsStackView
     ]
     
+    private var dateFrom: Date = Date() {
+        willSet {
+            if newValue > dateTo {
+                dateTo = newValue
+            }
+            let dateString = dateManager.getString(from: newValue, with: .MMMd)
+            dateFromLabel.text = dateString
+        }
+    }
+    private var dateTo: Date = Date() {
+        didSet {
+            let dateString = dateManager.getString(from: dateTo, with: .MMMd)
+            dateToLabel.text = dateString
+        }
+    }
+    
     // MARK: - Init
     
     init(_ presenter: TaskFormViewOutput) {
@@ -115,6 +135,10 @@ class TaskFormView: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Lifecycle ViewController
@@ -190,6 +214,27 @@ class TaskFormView: UIViewController {
         ])
     }
     
+    private func openDatePicker(_ label: InteractLable) {
+        var datePicker: CustomDatePicker?
+        switch label.tag {
+        case 0:
+            datePicker = CustomDatePicker(date: dateFrom, frame: view.bounds)
+            datePicker?.callback = { [weak self] date in
+                self?.dateFrom = date
+            }
+        case 1:
+            datePicker = CustomDatePicker(date: dateTo, frame: view.bounds)
+            datePicker?.callback = { [weak self] date in
+                self?.dateTo = date
+            }
+        default:
+            break
+        }
+        if let picker = datePicker {
+            view.addSubview(picker)
+        }
+    }
+    
     // MARK: - Navigation
 
     var onBack: ((String?) -> Void)?
@@ -197,16 +242,14 @@ class TaskFormView: UIViewController {
     // MARK: - Actions
     
     @objc private func tappedOnElement(_ sender: UITapGestureRecognizer) {
-        if let view = sender.view, view is InteractLable {
-            switch view.tag {
-            case 0:
-                print("tapped \(view.tag)")
-            case 1:
-                print("tapped \(view.tag)")
+        if let label = sender.view, label is InteractLable {
+            switch label.tag {
+            case 0, 1:
+                openDatePicker(label as! InteractLable)
             case 2:
-                print("tapped \(view.tag)")
+                print("tapped \(label.tag)")
             case 3:
-                print("tapped \(view.tag)")
+                print("tapped \(label.tag)")
             default:
                 break
             }
