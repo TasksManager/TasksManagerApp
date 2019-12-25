@@ -47,4 +47,13 @@ class CoreDataStack {
         return nil
     }
     
+    func delete(project: Project) {
+        context.delete(project)
+        do {
+            try context.save()
+        } catch let error {
+            fatalError("Unresolved error \(error)")
+        }
+    }
+    
 }

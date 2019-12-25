@@ -5,6 +5,8 @@ enum DateFormats: String {
     case MMMd = "MMM d"
     // 22:04
     case hhmm = "hh:mm"
+    // 18 December 2019
+    case ddMMMMyyyy = "dd MMMM yyyy"
 }
 
 /**

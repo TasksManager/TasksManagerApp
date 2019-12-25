@@ -1,46 +1,41 @@
 //
-//  TaskFormCoordinator.swift
+//  ProjectFormCoordinator.swift
 //  TasksManagerApp
 //
-//  Created by maxim on 14.12.2019.
+//  Created by Mikhail Semerikov on 18.12.2019.
 //  Copyright © 2019 Mikhail Semerikov. All rights reserved.
 //
 
 import UIKit
 
-class TaskFormCoordinator: BaseCoordinator {
-    
-    // MARK: - Public properties
+class ProjectFormCoordinator: BaseCoordinator {
 
+    // MARK: - Public properties
     var onFinishFlow: ((String?) -> Void)?
     
     // MARK: - Private properties
-    
     private let parentController: UIViewController
-    private let task: Task?
+    private let project: Project?
     
     // MARK: - Init
-    
-    init(parentController: UIViewController, task: Task?) {
+    init(parentController: UIViewController, project: Project?) {
         self.parentController = parentController
-        self.task = task
+        self.project = project
     }
     
     // MARK: - Puplic methods
-    
     override func start() {
-        showTaskFormModule()
+        showProjectFormModule()
     }
     
     // MARK: - Private methods
-    
-    private func showTaskFormModule() {
-        let controller = ViewsFactory().createTaskFormView(task!)
+    private func showProjectFormModule() {
+        let controller = ViewsFactory().createProjectFormView(project)
+        controller.modalPresentationStyle = .fullScreen
         controller.onBack = { [weak self] message in
             controller.dismiss(animated: true)
             self?.onFinishFlow?(message)
         }
         parentController.present(controller, animated: true)
     }
-
 }

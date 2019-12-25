@@ -20,7 +20,6 @@ struct DataBaseManager: DataBaseManagerProtocol {
     private let predicateFactory = PredicateFactory()
     
     // MARK: - CRUD
-    
     func add(task model: TaskModel) -> Error? {
         let task = Task(context: dataBase.context)
         task.setData(from: model)
@@ -28,8 +27,8 @@ struct DataBaseManager: DataBaseManagerProtocol {
     }
     
     func add(project model: ProjectModel) -> Error? {
-        let task = Project(context: dataBase.context)
-        task.setData(from: model)
+        let project = Project(context: dataBase.context)
+        project.setData(from: model)
         return dataBase.saveContext()
     }
     
@@ -116,5 +115,9 @@ struct DataBaseManager: DataBaseManagerProtocol {
             return error
         }
     }
-
+    
+    func deleteProject(project: Project) {
+        dataBase.delete(project: project)
+    }
+    
 }

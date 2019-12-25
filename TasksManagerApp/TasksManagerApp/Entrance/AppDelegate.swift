@@ -19,14 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        checkDataBase()
+//        checkDataBase()
        
         coordinator = AppCoordinator(self.window ?? UIWindow())
         coordinator?.start()
         
         return true
     }
-    
+/*
     // swiftlint:disable all
     // FIXME: - Убрать! Оставил для теста базы данных.
     
@@ -161,4 +161,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }        
         
     }
+*/
 }
