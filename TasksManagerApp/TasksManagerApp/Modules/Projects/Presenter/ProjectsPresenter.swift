@@ -16,9 +16,7 @@ final class ProjectsPresenter {
     
     // MARK: - Constants
     let dbManager = DataBaseManager.instance
-    let predicate = NSPredicate(value: true)
     var arrayProjects: [Project]?
-//    var filteredArrayProjects: [Project] = []
     // MARK: - Public properties
     // MARK: - Private properties
     // MARK: - Init
@@ -35,6 +33,7 @@ final class ProjectsPresenter {
     }
     
     func getProjects() {
+        let predicate = NSPredicate(value: true)
         let projects = dbManager.fetch(projects: predicate)
         do {
             arrayProjects = try projects.get()

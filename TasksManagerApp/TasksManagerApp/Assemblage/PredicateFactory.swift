@@ -51,8 +51,4 @@ struct PredicateFactory {
         return NSPredicate(format: "%K == %@", "id", id as CVarArg)
     }
     
-    func predicate(q: String) -> NSPredicate {
-        return NSPredicate(format: "title == %@", q)
-    }
-    
 }
