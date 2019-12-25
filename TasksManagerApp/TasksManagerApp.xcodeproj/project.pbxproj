@@ -60,6 +60,14 @@
 		94EEF006239D9591000D077C /* AnalyticCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEF005239D9591000D077C /* AnalyticCoordinator.swift */; };
 		94F8F48923AFCAE000FDF7C4 /* InteractLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F8F48823AFCAE000FDF7C4 /* InteractLable.swift */; };
 		94F8F48B23AFDBC600FDF7C4 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F8F48A23AFDBC600FDF7C4 /* CustomLabel.swift */; };
+		C48F15B623B36AFE002D04E3 /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15B523B36AFE002D04E3 /* ProjectsPresenter.swift */; };
+		C48F15B823B36B09002D04E3 /* ProjectsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15B723B36B09002D04E3 /* ProjectsViewInput.swift */; };
+		C48F15BA23B36B16002D04E3 /* ProjectsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15B923B36B16002D04E3 /* ProjectsViewCell.swift */; };
+		C48F15BC23B36B1B002D04E3 /* ProjectsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15BB23B36B1B002D04E3 /* ProjectsViewOutput.swift */; };
+		C48F15BE23B370BD002D04E3 /* ProjectFormCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15BD23B370BD002D04E3 /* ProjectFormCoordinator.swift */; };
+		C48F15C023B370E0002D04E3 /* ProjectFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15BF23B370E0002D04E3 /* ProjectFormPresenter.swift */; };
+		C48F15C223B370E9002D04E3 /* ProjectFormViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15C123B370E9002D04E3 /* ProjectFormViewInput.swift */; };
+		C48F15C423B370F1002D04E3 /* ProjectFormViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F15C323B370F0002D04E3 /* ProjectFormViewOutput.swift */; };
 		C4E13D1B239A5543003C3246 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E13D1A239A5543003C3246 /* Assets.xcassets */; };
 		C4E13D1E239A5543003C3246 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E13D1C239A5543003C3246 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -119,6 +127,14 @@
 		94EEF005239D9591000D077C /* AnalyticCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticCoordinator.swift; sourceTree = "<group>"; };
 		94F8F48823AFCAE000FDF7C4 /* InteractLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractLable.swift; sourceTree = "<group>"; };
 		94F8F48A23AFDBC600FDF7C4 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		C48F15B523B36AFE002D04E3 /* ProjectsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsPresenter.swift; sourceTree = "<group>"; };
+		C48F15B723B36B09002D04E3 /* ProjectsViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewInput.swift; sourceTree = "<group>"; };
+		C48F15B923B36B16002D04E3 /* ProjectsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewCell.swift; sourceTree = "<group>"; };
+		C48F15BB23B36B1B002D04E3 /* ProjectsViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewOutput.swift; sourceTree = "<group>"; };
+		C48F15BD23B370BD002D04E3 /* ProjectFormCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFormCoordinator.swift; sourceTree = "<group>"; };
+		C48F15BF23B370E0002D04E3 /* ProjectFormPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFormPresenter.swift; sourceTree = "<group>"; };
+		C48F15C123B370E9002D04E3 /* ProjectFormViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFormViewInput.swift; sourceTree = "<group>"; };
+		C48F15C323B370F0002D04E3 /* ProjectFormViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFormViewOutput.swift; sourceTree = "<group>"; };
 		C4E13D0E239A5526003C3246 /* TasksManagerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TasksManagerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E13D1A239A5543003C3246 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4E13D1D239A5543003C3246 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -280,6 +296,8 @@
 		94EEEFC6239D00C1000D077C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				C48F15B523B36AFE002D04E3 /* ProjectsPresenter.swift */,
+				C48F15B723B36B09002D04E3 /* ProjectsViewInput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -353,6 +371,8 @@
 			isa = PBXGroup;
 			children = (
 				94210C08239E205F00A64061 /* ProjectsView.swift */,
+				C48F15BB23B36B1B002D04E3 /* ProjectsViewOutput.swift */,
+				C48F15B923B36B16002D04E3 /* ProjectsViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -387,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				94210C0C239E20B500A64061 /* ProjectFormView.swift */,
+				C48F15C323B370F0002D04E3 /* ProjectFormViewOutput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -394,6 +415,8 @@
 		94EEEFE4239D6EE0000D077C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				C48F15BF23B370E0002D04E3 /* ProjectFormPresenter.swift */,
+				C48F15C123B370E9002D04E3 /* ProjectFormViewInput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -401,6 +424,7 @@
 		94EEEFE5239D6EE8000D077C /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				C48F15BD23B370BD002D04E3 /* ProjectFormCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -618,6 +642,7 @@
 			files = (
 				9423AD1523A1E2B800E27AFA /* ProjectModel.swift in Sources */,
 				94ECB7E123AA997400E221A2 /* SaveCancelButtons.swift in Sources */,
+				C48F15BA23B36B16002D04E3 /* ProjectsViewCell.swift in Sources */,
 				4685DDF923A606ED00B34FD0 /* UIColor+Extensions.swift in Sources */,
 				94EEEFD0239D061E000D077C /* BaseCoordinator.swift in Sources */,
 				94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */,
@@ -626,15 +651,21 @@
 				94210C11239E228200A64061 /* ViewsFactory.swift in Sources */,
 				94EEF006239D9591000D077C /* AnalyticCoordinator.swift in Sources */,
 				942D0BB323A7BA02006AC48A /* TaskFormViewOutput.swift in Sources */,
+				C48F15C223B370E9002D04E3 /* ProjectFormViewInput.swift in Sources */,
 				94EEEFF6239D7D61000D077C /* MainTabBarCoordinator.swift in Sources */,
 				9423AD1323A1E18D00E27AFA /* TaskModel.swift in Sources */,
+				C48F15B823B36B09002D04E3 /* ProjectsViewInput.swift in Sources */,
 				94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */,
 				942294A723AF2FDF00964320 /* DataBaseError.swift in Sources */,
+				C48F15BC23B36B1B002D04E3 /* ProjectsViewOutput.swift in Sources */,
 				9423AD2A23A1F5F000E27AFA /* DateManager.swift in Sources */,
 				9423AD1B23A1E40900E27AFA /* Project+CoreDataClass.swift in Sources */,
+				C48F15B623B36AFE002D04E3 /* ProjectsPresenter.swift in Sources */,
+				C48F15C023B370E0002D04E3 /* ProjectFormPresenter.swift in Sources */,
 				9423AD1D23A1E40900E27AFA /* Task+CoreDataClass.swift in Sources */,
 				94210C0B239E208E00A64061 /* TasksView.swift in Sources */,
 				9423AD2123A1E94600E27AFA /* DataBaseManager.swift in Sources */,
+				C48F15C423B370F1002D04E3 /* ProjectFormViewOutput.swift in Sources */,
 				94EEEFC3239CFCEA000D077C /* MainTabBarController.swift in Sources */,
 				9423AD2623A1EB7600E27AFA /* DataBaseManagerProtocol.swift in Sources */,
 				942D0BB923A7BA3A006AC48A /* TaskFormCoordinator.swift in Sources */,
@@ -646,6 +677,7 @@
 				94210C0F239E20F300A64061 /* TaskFormView.swift in Sources */,
 				9423AD2323A1EAE000E27AFA /* CoreDataStack.swift in Sources */,
 				94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */,
+				C48F15BE23B370BD002D04E3 /* ProjectFormCoordinator.swift in Sources */,
 				9423AD2823A1F5CF00E27AFA /* PredicateFactory.swift in Sources */,
 				94EEEFED239D7194000D077C /* AppCoordinator.swift in Sources */,
 				94F8F48B23AFDBC600FDF7C4 /* CustomLabel.swift in Sources */,

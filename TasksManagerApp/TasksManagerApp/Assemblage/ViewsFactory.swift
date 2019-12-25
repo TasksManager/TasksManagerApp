@@ -29,8 +29,11 @@ struct ViewsFactory {
         return taskFormViewController
     }
     
-    func createProjectFormView() -> ProjectFormView {
-        let projectFormViewController = ProjectFormView()
+    func createProjectFormView(_ project: Project?) -> ProjectFormView {
+        let dbManager = DataBaseManager.instance
+        let presenter = ProjectFormPresenter(dataBase: dbManager, project: project)
+        let projectFormViewController = ProjectFormView(presenter)
+        presenter.viewInput = projectFormViewController
         return projectFormViewController
     }
     
@@ -44,7 +47,9 @@ struct ViewsFactory {
     }
     
     func createProjectsView() -> ProjectsView {
-        let projectsController = ProjectsView()
+        let presenter = ProjectsPresenter()
+        let projectsController = ProjectsView(presenter)
+        presenter.viewInput = projectsController
         projectsController.tabBarItem = UITabBarItem(
             title: "Projects",
             image: UIImage(named: "ProjectsTabIcon"), tag: 1

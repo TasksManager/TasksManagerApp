@@ -59,7 +59,7 @@ class MainTabBarCoordinator: BaseCoordinator {
         case controller as TasksView:
             tabBarCoordinator = TasksCoordinator(controller)
         case controller as ProjectsView:
-            tabBarCoordinator = ProjectsCoordinator(controller)
+            tabBarCoordinator = ProjectsCoordinator(controller as! ProjectsView)
         case controller as AnalyticView:            
             tabBarCoordinator = AnalyticCoordinator(controller as! AnalyticView)
         default:
