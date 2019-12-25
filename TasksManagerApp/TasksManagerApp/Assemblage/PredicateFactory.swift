@@ -1,6 +1,6 @@
 //
 //  PredicateManager.swift
-//  BloodPressureDiary
+//  TasksManagerApp
 //
 //  Created by maxim on 26.11.2019.
 //  Copyright © 2019 lifeasplay. All rights reserved.

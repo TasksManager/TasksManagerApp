@@ -35,7 +35,7 @@ class TaskFormCoordinator: BaseCoordinator {
     // MARK: - Private methods
     
     private func showTaskFormModule() {
-        let controller = ViewsFactory().createTaskFormView(task)
+        let controller = ViewsFactory().createTaskFormView(task!)
         controller.onBack = { [weak self] message in
             controller.dismiss(animated: true)
             self?.onFinishFlow?(message)
