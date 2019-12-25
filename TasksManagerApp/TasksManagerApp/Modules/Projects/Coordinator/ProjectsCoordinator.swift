@@ -9,35 +9,28 @@
 import UIKit
 
 class ProjectsCoordinator: BaseCoordinator {
-    
+
     // MARK: - Private properties
-    private let controller: ProjectsView
+    
+    private let controller: UIViewController
     
     // MARK: - Init
-    init(_ controller: ProjectsView) {
+    
+    init(_ controller: UIViewController) {
         self.controller = controller
     }
     
     // MARK: - Puplic methods
+    
     override func start() {
-        showProjectsModule()
+        controller.tabBarController?.selectedIndex = controller.tabBarItem.tag
     }
     
     // MARK: - Private methods
+    
     private func showProjectsModule() {
-        controller.tabBarController?.selectedIndex = controller.tabBarItem.tag
-        controller.onProjectForm = { [weak self] project in
-            guard  let self = self else { return }
-            let coordinator = ProjectFormCoordinator(
-                parentController: self.controller,
-                project: project
-            )
-            coordinator.onFinishFlow = { [weak self, weak coordinator] message in
-                self?.removeDependency(coordinator)
-                self?.start()
-            }
-            self.addDependency(coordinator)
-            coordinator.start()
-        }
+        
     }
+
+
 }
