@@ -10,110 +10,67 @@ import UIKit
 
 /// Форма редактирования задачи.
 class TaskFormView: UIViewController {
+
+    // MARK: - Constants
+
+    let dateManager = DateManager()
     
     // MARK: - Private properties
     
     private let viewOutput: TaskFormViewOutput
     // Название экрана.
-    private let titleScreenLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Task"
+    private let titleScreenLabel: CustomLabel = {
+        let label = CustomLabel(text: "Task")
         label.textAlignment = .center
-        label.backgroundColor = .purple
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     // Название начальной даты.
-    private let dateFromTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "DateFrom: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let dateFromTitleLabel = CustomLabel(text: "DateFrom: ")
     // Начальная дата.
-    private let dateFromLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let dateFromLabel = InteractLable(text: "date", tag: 0)
     // Название конечной даты.
-    private let dateToTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "DateTo: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let dateToTitleLabel = CustomLabel(text: "DateTo: ")
     // Конечная дата.
-    private let dateToLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let dateToLabel = InteractLable(text: "date", tag: 1)
     // Название тайтла.
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Title: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let titleLabel = CustomLabel(text: "Title: ")
     // Тайтл.
     private let titleTextField: UITextField = {
         let textField = UITextField()
+        textField.backgroundColor = .green
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     // Название описания.
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Description: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let descriptionLabel = CustomLabel(text: "Description: ")
     // Описание.
     private let descriptionTextField: UITextField = {
         let textField = UITextField()
+        textField.backgroundColor = .orange
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     // Название поля проект.
-    private let projectTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Project: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let projectTitleLabel = CustomLabel(text: "Project: ")
     // Проект.
-    private let projectLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let projectLabel = InteractLable(text: "project", tag: 2)
     // Название поля цвет.
-    private let colorTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Color: "
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let colorTitleLabel = CustomLabel(text: "Color: ")
     // Цвет.
-    private let colorLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let colorLabel = InteractLable(text: "color", tag: 3)
     // Левый стек.
     private let leftStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = .red
         stackView.axis = .vertical
+        stackView.distribution = .equalCentering
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     // Правый стек.
     private let rightStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = .green
         stackView.axis = .vertical
+        stackView.distribution = .equalCentering
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -130,9 +87,6 @@ class TaskFormView: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
-    // Вью содержащая весь контент
-    private let contentView = UIView()
-    
     lazy var leftStackViews = [
         dateFromTitleLabel,
         dateToTitleLabel,
@@ -156,6 +110,22 @@ class TaskFormView: UIViewController {
         buttonsStackView
     ]
     
+    private var dateFrom: Date = Date() {
+        willSet {
+            if newValue > dateTo {
+                dateTo = newValue
+            }
+            let dateString = dateManager.getString(from: newValue, with: .MMMd)
+            dateFromLabel.text = dateString
+        }
+    }
+    private var dateTo: Date = Date() {
+        didSet {
+            let dateString = dateManager.getString(from: dateTo, with: .MMMd)
+            dateToLabel.text = dateString
+        }
+    }
+    
     // MARK: - Init
     
     init(_ presenter: TaskFormViewOutput) {
@@ -167,10 +137,15 @@ class TaskFormView: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     // MARK: - Lifecycle ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerForKeyboardNotification()
         configure()
     }
     
@@ -189,71 +164,97 @@ class TaskFormView: UIViewController {
         setupConstraints()
     }
     
-//    private func configureScrollView() {
-//        scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height + 500.0)
-//    }
-    
     private func addViews() {
         view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        subViews.forEach { contentView.addSubview($0) }
+        subViews.forEach { scrollView.addSubview($0) }
         leftStackViews.forEach { leftStackView.addArrangedSubview($0) }
         rightStackViews.forEach { rightStackView.addArrangedSubview($0) }
+        
+        for view in rightStackViews where view is InteractLable {
+            let recognizer = UITapGestureRecognizer(target: self, action: #selector(tappedOnElement(_:)))
+            view.addGestureRecognizer(recognizer)
+        }
     }
     
     private func assignDelegetes() {
         buttonsStackView.delegate = self
     }
     
-    
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
-        
-        // в этом констрейнте вся магия скрола на экране.
-        let heightContentViewConstraint = scrollView.heightAnchor.constraint(equalTo: safeArea.heightAnchor)
-        heightContentViewConstraint.priority = UILayoutPriority(999)
-        heightContentViewConstraint.isActive = true
         
         NSLayoutConstraint.activate([
             scrollView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
             scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             scrollView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            
-            contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: safeArea.widthAnchor)
+            scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            titleScreenLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            titleScreenLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16.0),
-            titleScreenLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            titleScreenLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            titleScreenLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            titleScreenLabel.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
+            titleScreenLabel.heightAnchor.constraint(equalToConstant: 30.0),
 
             leftStackView.widthAnchor.constraint(equalToConstant: 100.0),
-            leftStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            leftStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor, constant: 16.0),
+            leftStackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            leftStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor, constant: 60.0),
+            leftStackView.heightAnchor.constraint(equalToConstant: 360.0),
 
-            rightStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor),
-            rightStackView.leftAnchor.constraint(equalTo: leftStackView.rightAnchor),
+            rightStackView.topAnchor.constraint(equalTo: leftStackView.topAnchor),
+            rightStackView.leftAnchor.constraint(equalTo: leftStackView.rightAnchor, constant: 8.0),
             rightStackView.heightAnchor.constraint(equalTo: leftStackView.heightAnchor),
-            rightStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            rightStackView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -16.0),
 
-            buttonsStackView.heightAnchor.constraint(equalToConstant: 100.0),
-            buttonsStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            buttonsStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            buttonsStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor, constant: 800.0),
-            buttonsStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            buttonsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            buttonsStackView.heightAnchor.constraint(equalToConstant: 120.0),
+            buttonsStackView.topAnchor.constraint(equalTo: leftStackView.bottomAnchor),
+            buttonsStackView.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
+            buttonsStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            buttonsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
         ])
+    }
+    
+    private func openDatePicker(_ label: InteractLable) {
+        var datePicker: CustomDatePicker?
+        switch label.tag {
+        case 0:
+            datePicker = CustomDatePicker(date: dateFrom, frame: view.bounds)
+            datePicker?.callback = { [weak self] date in
+                self?.dateFrom = date
+            }
+        case 1:
+            datePicker = CustomDatePicker(date: dateTo, frame: view.bounds)
+            datePicker?.callback = { [weak self] date in
+                self?.dateTo = date
+            }
+        default:
+            break
+        }
+        if let picker = datePicker {
+            view.addSubview(picker)
+        }
     }
     
     // MARK: - Navigation
 
     var onBack: ((String?) -> Void)?
+    
+    // MARK: - Actions
+    
+    @objc private func tappedOnElement(_ sender: UITapGestureRecognizer) {
+        if let label = sender.view, label is InteractLable {
+            switch label.tag {
+            case 0, 1:
+                openDatePicker(label as! InteractLable)
+            case 2:
+                print("tapped \(label.tag)")
+            case 3:
+                print("tapped \(label.tag)")
+            default:
+                break
+            }
+        }
+    }
 
 }
 
@@ -285,8 +286,9 @@ extension TaskFormView: SaveCancelButtonsDelegate {
     }
 }
 
+// MARK: - методы управления сдвигом при появлении клавиатуры
+
 extension TaskFormView {
-    // MARK: - методы управления сдвигом при появлении клавиатуры
     func registerForKeyboardNotification() {
         NotificationCenter.default.addObserver(
             self,
@@ -308,10 +310,10 @@ extension TaskFormView {
         // swiftlint:disable force_cast
         let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue)
             .cgRectValue
-        scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
+        scrollView.contentInset.bottom = kbFrameSize.height
     }
     
     @objc func kbWillHide(_ notification: Notification) {
-        scrollView.contentOffset = CGPoint.zero
+        scrollView.contentInset.bottom = .zero
     }
 }

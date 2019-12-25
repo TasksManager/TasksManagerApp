@@ -61,7 +61,7 @@ class SaveCancelButtons: UIStackView {
     
     private func configure() {
         axis = .horizontal
-        alignment = .top
+        alignment = .center
         distribution = .fillEqually
         
         addButtons()

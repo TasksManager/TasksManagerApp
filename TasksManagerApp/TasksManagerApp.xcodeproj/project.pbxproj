@@ -47,6 +47,7 @@
 		942D0BB623A7BA27006AC48A /* TaskFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB423A7BA27006AC48A /* TaskFormPresenter.swift */; };
 		942D0BB723A7BA27006AC48A /* TaskFormViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB523A7BA27006AC48A /* TaskFormViewInput.swift */; };
 		942D0BB923A7BA3A006AC48A /* TaskFormCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */; };
+		948F582523B1C29D00701FFD /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948F582423B1C29D00701FFD /* CustomDatePicker.swift */; };
 		94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */; };
 		94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */; };
 		94ECB7E123AA997400E221A2 /* SaveCancelButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */; };
@@ -57,6 +58,8 @@
 		94EEEFED239D7194000D077C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFEC239D7194000D077C /* AppCoordinator.swift */; };
 		94EEEFF6239D7D61000D077C /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEEFF5239D7D61000D077C /* MainTabBarCoordinator.swift */; };
 		94EEF006239D9591000D077C /* AnalyticCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEF005239D9591000D077C /* AnalyticCoordinator.swift */; };
+		94F8F48923AFCAE000FDF7C4 /* InteractLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F8F48823AFCAE000FDF7C4 /* InteractLable.swift */; };
+		94F8F48B23AFDBC600FDF7C4 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F8F48A23AFDBC600FDF7C4 /* CustomLabel.swift */; };
 		C4E13D1B239A5543003C3246 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E13D1A239A5543003C3246 /* Assets.xcassets */; };
 		C4E13D1E239A5543003C3246 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E13D1C239A5543003C3246 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -102,6 +105,7 @@
 		942D0BB423A7BA27006AC48A /* TaskFormPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormPresenter.swift; sourceTree = "<group>"; };
 		942D0BB523A7BA27006AC48A /* TaskFormViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormViewInput.swift; sourceTree = "<group>"; };
 		942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormCoordinator.swift; sourceTree = "<group>"; };
+		948F582423B1C29D00701FFD /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticPresenter.swift; sourceTree = "<group>"; };
 		94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewOutput.swift; sourceTree = "<group>"; };
 		94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCancelButtons.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 		94EEEFEC239D7194000D077C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		94EEEFF5239D7D61000D077C /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		94EEF005239D9591000D077C /* AnalyticCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticCoordinator.swift; sourceTree = "<group>"; };
+		94F8F48823AFCAE000FDF7C4 /* InteractLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractLable.swift; sourceTree = "<group>"; };
+		94F8F48A23AFDBC600FDF7C4 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		C4E13D0E239A5526003C3246 /* TasksManagerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TasksManagerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E13D1A239A5543003C3246 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4E13D1D239A5543003C3246 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -209,6 +215,9 @@
 			isa = PBXGroup;
 			children = (
 				94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */,
+				94F8F48823AFCAE000FDF7C4 /* InteractLable.swift */,
+				94F8F48A23AFDBC600FDF7C4 /* CustomLabel.swift */,
+				948F582423B1C29D00701FFD /* CustomDatePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -612,6 +621,7 @@
 				4685DDF923A606ED00B34FD0 /* UIColor+Extensions.swift in Sources */,
 				94EEEFD0239D061E000D077C /* BaseCoordinator.swift in Sources */,
 				94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */,
+				948F582523B1C29D00701FFD /* CustomDatePicker.swift in Sources */,
 				942D0BB723A7BA27006AC48A /* TaskFormViewInput.swift in Sources */,
 				94210C11239E228200A64061 /* ViewsFactory.swift in Sources */,
 				94EEF006239D9591000D077C /* AnalyticCoordinator.swift in Sources */,
@@ -638,9 +648,11 @@
 				94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */,
 				9423AD2823A1F5CF00E27AFA /* PredicateFactory.swift in Sources */,
 				94EEEFED239D7194000D077C /* AppCoordinator.swift in Sources */,
+				94F8F48B23AFDBC600FDF7C4 /* CustomLabel.swift in Sources */,
 				942D0BB623A7BA27006AC48A /* TaskFormPresenter.swift in Sources */,
 				942294A923AF4DD600964320 /* BrokenRule.swift in Sources */,
 				94210C07239E201500A64061 /* AnalyticView.swift in Sources */,
+				94F8F48923AFCAE000FDF7C4 /* InteractLable.swift in Sources */,
 				94210C13239E231600A64061 /* AnalyticViewInput.swift in Sources */,
 				94EEEFB3239CB3B6000D077C /* AppDelegate.swift in Sources */,
 				46F87E5923A660BD0095264E /* UIFont+Extensions.swift in Sources */,

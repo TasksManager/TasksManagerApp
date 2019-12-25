@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
+    // swiftlint:disable all
     // FIXME: - Убрать! Оставил для теста базы данных.
     
     let predicateFactory = PredicateFactory()
