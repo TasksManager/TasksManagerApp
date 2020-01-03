@@ -47,7 +47,13 @@
 		942D0BB623A7BA27006AC48A /* TaskFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB423A7BA27006AC48A /* TaskFormPresenter.swift */; };
 		942D0BB723A7BA27006AC48A /* TaskFormViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB523A7BA27006AC48A /* TaskFormViewInput.swift */; };
 		942D0BB923A7BA3A006AC48A /* TaskFormCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */; };
+		944D3D6D23B9FD8B000F9349 /* TaskFormProjectsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D3D6C23B9FD8B000F9349 /* TaskFormProjectsCoordinator.swift */; };
+		944D3D6F23B9FDBD000F9349 /* TaskFormProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D3D6E23B9FDBD000F9349 /* TaskFormProjectsPresenter.swift */; };
+		944D3D7123B9FDEA000F9349 /* TaskFormProjectsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D3D7023B9FDEA000F9349 /* TaskFormProjectsViewInput.swift */; };
+		944D3D7323B9FE06000F9349 /* TaskFormProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D3D7223B9FE06000F9349 /* TaskFormProjectsView.swift */; };
+		944D3D7523B9FE27000F9349 /* TaskFormProjectsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D3D7423B9FE27000F9349 /* TaskFormProjectsViewOutput.swift */; };
 		948F582523B1C29D00701FFD /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948F582423B1C29D00701FFD /* CustomDatePicker.swift */; };
+		94E06C8F23BB582F00D36E33 /* UIColor+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E06C8E23BB582F00D36E33 /* UIColor+String.swift */; };
 		94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */; };
 		94E4EDFF23A0B39700525D18 /* AnalyticViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */; };
 		94ECB7E123AA997400E221A2 /* SaveCancelButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */; };
@@ -113,7 +119,13 @@
 		942D0BB423A7BA27006AC48A /* TaskFormPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormPresenter.swift; sourceTree = "<group>"; };
 		942D0BB523A7BA27006AC48A /* TaskFormViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormViewInput.swift; sourceTree = "<group>"; };
 		942D0BB823A7BA3A006AC48A /* TaskFormCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormCoordinator.swift; sourceTree = "<group>"; };
+		944D3D6C23B9FD8B000F9349 /* TaskFormProjectsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormProjectsCoordinator.swift; sourceTree = "<group>"; };
+		944D3D6E23B9FDBD000F9349 /* TaskFormProjectsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormProjectsPresenter.swift; sourceTree = "<group>"; };
+		944D3D7023B9FDEA000F9349 /* TaskFormProjectsViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormProjectsViewInput.swift; sourceTree = "<group>"; };
+		944D3D7223B9FE06000F9349 /* TaskFormProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormProjectsView.swift; sourceTree = "<group>"; };
+		944D3D7423B9FE27000F9349 /* TaskFormProjectsViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormProjectsViewOutput.swift; sourceTree = "<group>"; };
 		948F582423B1C29D00701FFD /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		94E06C8E23BB582F00D36E33 /* UIColor+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+String.swift"; sourceTree = "<group>"; };
 		94E4EDFC23A0B34E00525D18 /* AnalyticPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticPresenter.swift; sourceTree = "<group>"; };
 		94E4EDFE23A0B39700525D18 /* AnalyticViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewOutput.swift; sourceTree = "<group>"; };
 		94ECB7E023AA997400E221A2 /* SaveCancelButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCancelButtons.swift; sourceTree = "<group>"; };
@@ -155,6 +167,7 @@
 		4685DDF723A6069A00B34FD0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				94E06C8E23BB582F00D36E33 /* UIColor+String.swift */,
 				4685DDF823A606ED00B34FD0 /* UIColor+Extensions.swift */,
 				46F87E5823A660BD0095264E /* UIFont+Extensions.swift */,
 			);
@@ -227,6 +240,42 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
+		944D3D6823B9FD27000F9349 /* TaskFormProjects */ = {
+			isa = PBXGroup;
+			children = (
+				944D3D6923B9FD49000F9349 /* Coordinator */,
+				944D3D6A23B9FD57000F9349 /* Presenter */,
+				944D3D6B23B9FD60000F9349 /* View */,
+			);
+			path = TaskFormProjects;
+			sourceTree = "<group>";
+		};
+		944D3D6923B9FD49000F9349 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				944D3D6C23B9FD8B000F9349 /* TaskFormProjectsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		944D3D6A23B9FD57000F9349 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				944D3D6E23B9FDBD000F9349 /* TaskFormProjectsPresenter.swift */,
+				944D3D7023B9FDEA000F9349 /* TaskFormProjectsViewInput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		944D3D6B23B9FD60000F9349 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				944D3D7223B9FE06000F9349 /* TaskFormProjectsView.swift */,
+				944D3D7423B9FE27000F9349 /* TaskFormProjectsViewOutput.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		94ECB7DF23AA991500E221A2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +328,7 @@
 				94EEEFDE239D6E0D000D077C /* ProjectForm */,
 				94EEEFC9239D0167000D077C /* Tasks */,
 				94EEEFDD239D6E01000D077C /* TaskForm */,
+				944D3D6823B9FD27000F9349 /* TaskFormProjects */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -659,12 +709,16 @@
 				942294A723AF2FDF00964320 /* DataBaseError.swift in Sources */,
 				C48F15CC23B3808C002D04E3 /* ProjectsViewOutput.swift in Sources */,
 				9423AD2A23A1F5F000E27AFA /* DateManager.swift in Sources */,
+				94E06C8F23BB582F00D36E33 /* UIColor+String.swift in Sources */,
 				9423AD1B23A1E40900E27AFA /* Project+CoreDataClass.swift in Sources */,
 				C48F15C623B3804D002D04E3 /* ProjectsPresenter.swift in Sources */,
 				C48F15D023B380BC002D04E3 /* ProjectFormPresenter.swift in Sources */,
 				9423AD1D23A1E40900E27AFA /* Task+CoreDataClass.swift in Sources */,
+				944D3D6D23B9FD8B000F9349 /* TaskFormProjectsCoordinator.swift in Sources */,
 				94210C0B239E208E00A64061 /* TasksView.swift in Sources */,
 				9423AD2123A1E94600E27AFA /* DataBaseManager.swift in Sources */,
+				944D3D7323B9FE06000F9349 /* TaskFormProjectsView.swift in Sources */,
+				944D3D7123B9FDEA000F9349 /* TaskFormProjectsViewInput.swift in Sources */,
 				C48F15D423B380D0002D04E3 /* ProjectFormViewOutput.swift in Sources */,
 				94EEEFC3239CFCEA000D077C /* MainTabBarController.swift in Sources */,
 				9423AD2623A1EB7600E27AFA /* DataBaseManagerProtocol.swift in Sources */,
@@ -677,8 +731,10 @@
 				94210C0F239E20F300A64061 /* TaskFormView.swift in Sources */,
 				9423AD2323A1EAE000E27AFA /* CoreDataStack.swift in Sources */,
 				94E4EDFD23A0B34E00525D18 /* AnalyticPresenter.swift in Sources */,
+				944D3D7523B9FE27000F9349 /* TaskFormProjectsViewOutput.swift in Sources */,
 				C48F15CE23B380AD002D04E3 /* ProjectFormCoordinator.swift in Sources */,
 				9423AD2823A1F5CF00E27AFA /* PredicateFactory.swift in Sources */,
+				944D3D6F23B9FDBD000F9349 /* TaskFormProjectsPresenter.swift in Sources */,
 				94EEEFED239D7194000D077C /* AppCoordinator.swift in Sources */,
 				94F8F48B23AFDBC600FDF7C4 /* CustomLabel.swift in Sources */,
 				942D0BB623A7BA27006AC48A /* TaskFormPresenter.swift in Sources */,

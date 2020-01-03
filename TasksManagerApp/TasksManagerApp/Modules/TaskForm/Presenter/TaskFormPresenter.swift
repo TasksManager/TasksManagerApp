@@ -14,6 +14,48 @@ class TaskFormPresenter {
     
     weak var viewInput: (UIViewController & TaskFormViewInput)?
 
+    // MARK: - Constants
+
+    private let dateManager = DateManager()
+    
+    // MARK: - Public properties
+    
+    var dateFrom: Date = Date() {
+        willSet {
+            if newValue > dateTo { dateTo = newValue }
+            let dateString = dateManager.getString(from: newValue, with: .MMMd)
+            viewInput?.dateFromLabel.text = dateString
+        }
+    }
+    var dateTo: Date = Date() {
+        didSet {
+            let dateString = dateManager.getString(from: dateTo, with: .MMMd)
+            viewInput?.dateToLabel.text = dateString
+        }
+    }
+    var title: String = "" {
+        didSet {
+            viewInput?.tfTitle.text = title
+        }
+    }
+    var description = "" {
+        didSet {
+            viewInput?.tfDescription.text = title
+        }
+    }
+    var project: Project? {
+        didSet {
+            viewInput?.projectLabel.text = project?.title
+        }
+    }
+    var color: String? {
+        didSet {
+            guard let newValue = color else { return }
+            let newColor = UIColor(hexString: newValue)
+            viewInput?.colorLabel.textColor = newColor
+        }
+    }
+
     // MARK: - Private properties
     
     private let dbManager: DataBaseManagerProtocol
@@ -33,7 +75,7 @@ class TaskFormPresenter {
 extension TaskFormPresenter: TaskFormViewOutput {
     
     func didAppear() {
-        viewInput?.setData(task: self.task)
+        viewInput?.projectLabel.text = project == nil ? "project" : project?.title
     }
     
     func didCraft(data: TaskModel) {
@@ -53,5 +95,4 @@ extension TaskFormPresenter: TaskFormViewOutput {
 //            viewInput?.close(message: "Saved!")
 //        }
     }
-    
 }

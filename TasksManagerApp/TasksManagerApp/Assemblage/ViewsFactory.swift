@@ -22,10 +22,11 @@ struct ViewsFactory {
         return tabBarController
     }
     
-    func createTaskFormView(_ task: Task) -> TaskFormView {
+    func createTaskFormView(_ task: Task?) -> TaskFormView {
         let dbManager = DataBaseManager.instance
         let presenter = TaskFormPresenter(dataBase: dbManager, task: task)
         let taskFormViewController = TaskFormView(presenter)
+        presenter.viewInput = taskFormViewController
         return taskFormViewController
     }
     
@@ -66,6 +67,14 @@ struct ViewsFactory {
             image: UIImage(named: "AnalyticTabIcon"), tag: 2
         )
         return analyticController
+    }
+    
+    func createTaskFormProjectsView() -> TaskFormProjectsView {
+        let dataBaseManager = DataBaseManager.instance
+        let presenter = TaskFormProjectsPresenter(dataBase: dataBaseManager)
+        let taskFormProjectsView = TaskFormProjectsView(presenter)
+        presenter.viewInput = taskFormProjectsView
+        return taskFormProjectsView
     }
     
 }
