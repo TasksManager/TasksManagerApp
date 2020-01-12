@@ -13,13 +13,12 @@ protocol TaskFormViewOutput: AnyObject {
     var project: Project? { get set }
     var dateFrom: Date { get set }
     var title: String { get set }
-    var description: String { get set }
+    var description: String? { get set }
     var dateTo: Date { get set }
     var color: String? { get set }
-    /// Появился контроллер
-    func didAppear()
-    /// Завершилось создание новой задачи.
-    func didCraft(data: TaskModel)
-    /// Завершилось редактирования сущестующей задачи.
-    func didEdit(data: TaskModel)
+
+    /// Сохранение изменений
+    func save()
+    /// Контроллер загрузился
+    func didLoad()
 }

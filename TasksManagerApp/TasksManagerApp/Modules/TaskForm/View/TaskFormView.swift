@@ -28,14 +28,16 @@ class TaskFormView: UIViewController {
         let textField = UITextField()
         textField.backgroundColor = .green
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.tag = 0
+        textField.tag = 4
+        textField.textAlignment = .center
         return textField
     }()
     var tfDescription: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .orange
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.tag = 1
+        textField.textAlignment = .center
+        textField.tag = 5
         return textField
     }()
     // Выбор проекта
@@ -131,11 +133,7 @@ class TaskFormView: UIViewController {
         super.viewDidLoad()
         registerForKeyboardNotification()
         configure()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewOutput.didAppear()
+        viewOutput.didLoad()
     }
     
     // MARK: - Public methods
@@ -264,7 +262,7 @@ extension TaskFormView: SaveCancelButtonsDelegate {
     }
     
     func tappedSave() {
-        // Здесь валидируем и передаём модель в презентер
+        viewOutput.save()
     }
 }
 
@@ -305,9 +303,9 @@ extension TaskFormView {
 extension TaskFormView: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         switch textField.tag {
-        case 0:
+        case 4:
             viewOutput.title = textField.text ?? ""
-        case 1:
+        case 5:
             viewOutput.description = textField.text ?? ""
         default:
             break

@@ -38,14 +38,14 @@ class TaskFormPresenter {
             viewInput?.tfTitle.text = title
         }
     }
-    var description = "" {
+    var description: String? {
         didSet {
-            viewInput?.tfDescription.text = title
+            viewInput?.tfDescription.text = description
         }
     }
     var project: Project? {
         didSet {
-            viewInput?.projectLabel.text = project?.title
+            viewInput?.projectLabel.text = project == nil ? "project" : project?.title
         }
     }
     var color: String? {
@@ -67,32 +67,56 @@ class TaskFormPresenter {
         self.dbManager = dataBase
         self.task = task
     }
+    
+    // MARK: - Private methods
+    
+    // Setup value to form.
+    private func setupFormValues() {
+        guard let task = task else { return }
+        self.dateFrom = task.dateFrom
+        self.dateTo = task.dateTo
+        self.title = task.title
+        self.description = task.body
+        self.project = task.project
+    }
+    
+    private func validate(_ model: TaskModel) -> Bool {
+        var taskModel = model
+        guard taskModel.isValid else {
+            for brokenRule in taskModel.brokenRules {
+                print(brokenRule.message)
+            }
+            return false
+        }
+        return true
+    }
 
 }
 
 // MARK: - TaskFormViewInput
 
 extension TaskFormPresenter: TaskFormViewOutput {
-    
-    func didAppear() {
-        viewInput?.projectLabel.text = project == nil ? "project" : project?.title
+    func didLoad() {
+        setupFormValues()
     }
     
-    func didCraft(data: TaskModel) {
-        if let error = dbManager.add(task: data) {
+    func save() {
+        let dates = Dates(dateFrom, dateTo)
+        let model = TaskModel(
+            id: task?.id ?? UUID(),
+            dates: dates,
+            title: title,
+            body: description,
+            isComplete: false,
+            project: project)
+        guard validate(model) else {
+            return
+        }
+
+        if let error = task == nil ? dbManager.add(task: model) : dbManager.save(task: model) {
             viewInput?.show(message: error.localizedDescription)
         } else {
             viewInput?.close(message: "Saved!")
         }
-    }
-    
-    func didEdit(data: TaskModel) {
-//        guard let task = self.task else { return }
-//        task.setData(from: data)
-//        if let error = dbManager.save() {
-//            viewInput?.show(message: error.localizedDescription)
-//        } else {
-//            viewInput?.close(message: "Saved!")
-//        }
     }
 }
