@@ -16,6 +16,8 @@ class TaskFormCoordinator: BaseCoordinator {
     
     // MARK: - Private properties
     
+    private var navigationViewController = UINavigationController()
+    private var taskFormView: TaskFormView?
     private let parentController: UIViewController
     private let task: Task?
     
@@ -34,13 +36,25 @@ class TaskFormCoordinator: BaseCoordinator {
     
     // MARK: - Private methods
     
-    private func showTaskFormModule() {
-        let controller = ViewsFactory().createTaskFormView(task!)
-        controller.onBack = { [weak self] message in
-            controller.dismiss(animated: true)
+    private func showTaskFormModule() {        
+        taskFormView = ViewsFactory().createTaskFormView(task)
+        guard let taskFormView = taskFormView else { return }
+        navigationViewController = UINavigationController(rootViewController: taskFormView)
+        taskFormView.onBack = { [weak self] message in
+            taskFormView.dismiss(animated: true)
             self?.onFinishFlow?(message)
         }
-        parentController.present(controller, animated: true)
+        taskFormView.onTaskFormProjectsView = {
+            let coordinator = TaskFormProjectsCoordinator(navigationController: self.navigationViewController)
+            coordinator.onFinishFlow = { [weak self] project in
+                taskFormView.viewOutput.project = project
+                self?.navigationViewController.popToViewController(taskFormView, animated: true)
+                self?.removeDependency(coordinator)
+            }
+            self.addDependency(coordinator)
+            coordinator.start()
+        }
+        parentController.present(navigationViewController, animated: true)
     }
 
 }

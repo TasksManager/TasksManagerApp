@@ -162,13 +162,13 @@ extension ProjectsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .normal, title: "Delete") { action, view, completionHandler in
+        let delete = UIContextualAction(style: .normal, title: "Delete") { _, _, completionHandler in
             self.viewOutput.deleteProject(index: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             completionHandler(true)
         }
         
-        let edit = UIContextualAction(style: .normal, title: "Edit") { action, view, completionHandler in
+        let edit = UIContextualAction(style: .normal, title: "Edit") { _, _, completionHandler in
             self.onProjectForm?(self.viewOutput.getProject(index: indexPath.row))
             completionHandler(true)
         }

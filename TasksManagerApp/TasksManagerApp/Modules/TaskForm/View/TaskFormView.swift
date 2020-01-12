@@ -13,56 +13,59 @@ class TaskFormView: UIViewController {
 
     // MARK: - Constants
 
-    let dateManager = DateManager()
+    let controllerName = "Task"
     
-    // MARK: - Private properties
+    // MARK: - Public properties
     
-    private let viewOutput: TaskFormViewOutput
-    // Название экрана.
-    private let titleScreenLabel: CustomLabel = {
-        let label = CustomLabel(text: "Task")
-        label.textAlignment = .center
-        return label
-    }()
-    // Название начальной даты.
-    private let dateFromTitleLabel = CustomLabel(text: "DateFrom: ")
+    let viewOutput: TaskFormViewOutput
+    
     // Начальная дата.
-    private let dateFromLabel = InteractLable(text: "date", tag: 0)
-    // Название конечной даты.
-    private let dateToTitleLabel = CustomLabel(text: "DateTo: ")
+    var dateFromLabel = InteractLable(text: "date", tag: 0)
     // Конечная дата.
-    private let dateToLabel = InteractLable(text: "date", tag: 1)
-    // Название тайтла.
-    private let titleLabel = CustomLabel(text: "Title: ")
+    var dateToLabel = InteractLable(text: "date", tag: 1)
     // Тайтл.
-    private let titleTextField: UITextField = {
+    var tfTitle: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .green
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.tag = 4
+        textField.textAlignment = .center
         return textField
     }()
-    // Название описания.
-    private let descriptionLabel = CustomLabel(text: "Description: ")
-    // Описание.
-    private let descriptionTextField: UITextField = {
+    var tfDescription: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .orange
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.textAlignment = .center
+        textField.tag = 5
         return textField
     }()
+    // Выбор проекта
+    var projectLabel = InteractLable(text: "project", tag: 2)
+    // Цвет.
+    var colorLabel = InteractLable(text: "color", tag: 3)
+    
+    // MARK: - Private properties
+
+    // Название начальной даты.
+    private let dateFromTitleLabel = CustomLabel(text: "DateFrom: ")
+    // Название конечной даты.
+    private let dateToTitleLabel = CustomLabel(text: "DateTo: ")
+    // Название тайтла.
+    private let titleLabel = CustomLabel(text: "Title: ")
+    // Название описания.
+    private let descriptionLabel = CustomLabel(text: "Description: ")
+    // Описание.
     // Название поля проект.
     private let projectTitleLabel = CustomLabel(text: "Project: ")
-    // Проект.
-    private let projectLabel = InteractLable(text: "project", tag: 2)
     // Название поля цвет.
     private let colorTitleLabel = CustomLabel(text: "Color: ")
-    // Цвет.
-    private let colorLabel = InteractLable(text: "color", tag: 3)
     // Левый стек.
     private let leftStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalCentering
+        stackView.alignment = .trailing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -98,33 +101,16 @@ class TaskFormView: UIViewController {
     lazy var rightStackViews = [
         dateFromLabel,
         dateToLabel,
-        titleTextField,
-        descriptionTextField,
+        tfTitle,
+        tfDescription,
         projectLabel,
         colorLabel
     ]
     lazy var subViews = [
-        titleScreenLabel,
         leftStackView,
         rightStackView,
         buttonsStackView
     ]
-    
-    private var dateFrom: Date = Date() {
-        willSet {
-            if newValue > dateTo {
-                dateTo = newValue
-            }
-            let dateString = dateManager.getString(from: newValue, with: .MMMd)
-            dateFromLabel.text = dateString
-        }
-    }
-    private var dateTo: Date = Date() {
-        didSet {
-            let dateString = dateManager.getString(from: dateTo, with: .MMMd)
-            dateToLabel.text = dateString
-        }
-    }
     
     // MARK: - Init
     
@@ -147,18 +133,17 @@ class TaskFormView: UIViewController {
         super.viewDidLoad()
         registerForKeyboardNotification()
         configure()
+        viewOutput.didLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewOutput.didAppear()
-    }
+    // MARK: - Public methods
+
     
     // MARK: - Private methods
     
     private func configure() {
         view.backgroundColor = .white
-//        configureScrollView()
+        navigationItem.title = controllerName
         addViews()
         assignDelegetes()
         setupConstraints()
@@ -178,6 +163,8 @@ class TaskFormView: UIViewController {
     
     private func assignDelegetes() {
         buttonsStackView.delegate = self
+        tfTitle.delegate = self
+        tfDescription.delegate = self
     }
     
     private func setupConstraints() {
@@ -191,14 +178,9 @@ class TaskFormView: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            titleScreenLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-            titleScreenLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            titleScreenLabel.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
-            titleScreenLabel.heightAnchor.constraint(equalToConstant: 30.0),
-
             leftStackView.widthAnchor.constraint(equalToConstant: 100.0),
-            leftStackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-            leftStackView.topAnchor.constraint(equalTo: titleScreenLabel.bottomAnchor, constant: 60.0),
+            leftStackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 16.0),
+            leftStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 16.0),
             leftStackView.heightAnchor.constraint(equalToConstant: 360.0),
 
             rightStackView.topAnchor.constraint(equalTo: leftStackView.topAnchor),
@@ -218,14 +200,14 @@ class TaskFormView: UIViewController {
         var datePicker: CustomDatePicker?
         switch label.tag {
         case 0:
-            datePicker = CustomDatePicker(date: dateFrom, frame: view.bounds)
+            datePicker = CustomDatePicker(date: viewOutput.dateFrom, frame: view.bounds)
             datePicker?.callback = { [weak self] date in
-                self?.dateFrom = date
+                self?.viewOutput.dateFrom = date
             }
         case 1:
-            datePicker = CustomDatePicker(date: dateTo, frame: view.bounds)
+            datePicker = CustomDatePicker(date: viewOutput.dateTo, frame: view.bounds)
             datePicker?.callback = { [weak self] date in
-                self?.dateTo = date
+                self?.viewOutput.dateTo = date
             }
         default:
             break
@@ -238,6 +220,7 @@ class TaskFormView: UIViewController {
     // MARK: - Navigation
 
     var onBack: ((String?) -> Void)?
+    var onTaskFormProjectsView: (() -> Void)?
     
     // MARK: - Actions
     
@@ -245,11 +228,12 @@ class TaskFormView: UIViewController {
         if let label = sender.view, label is InteractLable {
             switch label.tag {
             case 0, 1:
+                // swiftlint:disable force_cast
                 openDatePicker(label as! InteractLable)
             case 2:
-                print("tapped \(label.tag)")
+                onTaskFormProjectsView?()
             case 3:
-                print("tapped \(label.tag)")
+                showColorAlert()
             default:
                 break
             }
@@ -261,10 +245,6 @@ class TaskFormView: UIViewController {
 // MARK: - TaskFormViewInput
 
 extension TaskFormView: TaskFormViewInput {
-    func setData(task: Task?) {
-        // Здесь устанавливаем данные.
-    }
-    
     func show(message: String) {
         // Здесь показыаем алерт.
     }
@@ -282,7 +262,7 @@ extension TaskFormView: SaveCancelButtonsDelegate {
     }
     
     func tappedSave() {
-        // Здесь валидируем и передаём модель в презентер
+        viewOutput.save()
     }
 }
 
@@ -315,5 +295,45 @@ extension TaskFormView {
     
     @objc func kbWillHide(_ notification: Notification) {
         scrollView.contentInset.bottom = .zero
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension TaskFormView: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        switch textField.tag {
+        case 4:
+            viewOutput.title = textField.text ?? ""
+        case 5:
+            viewOutput.description = textField.text ?? ""
+        default:
+            break
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+extension TaskFormView {
+    func showColorAlert() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let redActrion = UIAlertAction(title: "Red", style: .default) { (_) in
+            self.viewOutput.color = "#FF7E79"
+        }
+        let blueActrion = UIAlertAction(title: "Blue", style: .default) { (_) in
+            self.viewOutput.color = "#76D6FF"
+        }
+        let greenActrion = UIAlertAction(title: "Green", style: .default) { (_) in
+            self.viewOutput.color = "#73FA79"
+        }
+        let closeAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+        
+        let actions = [redActrion, blueActrion, greenActrion, closeAction]
+        actions.forEach { alertController.addAction($0) }
+        present(alertController, animated: true, completion: nil)
     }
 }

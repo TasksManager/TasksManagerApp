@@ -34,9 +34,10 @@ class AnalyticCoordinator: BaseCoordinator {
         // FIXME: - Убрать! Оставил потому, что нужна кнопка пререхода на форму.
         controller.onTaskForm = { [weak self] in
             guard  let self = self else { return }
+            let task = try? DataBaseManager.instance.fetch(tasks: NSPredicate(value: true)).get().first
             let coordinator = TaskFormCoordinator(
                 parentController: self.controller,
-                task: nil
+                task: task
             )
             coordinator.onFinishFlow = { [weak self, weak coordinator] (message) in
                 print(message ?? "")
