@@ -21,8 +21,11 @@
 		46F87E5623A65FCE0095264E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46F87E4A23A65FCE0095264E /* Roboto-Regular.ttf */; };
 		46F87E5723A65FCE0095264E /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46F87E4B23A65FCE0095264E /* Roboto-Thin.ttf */; };
 		46F87E5923A660BD0095264E /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F87E5823A660BD0095264E /* UIFont+Extensions.swift */; };
+		517E39B023E06B6000368DAD /* TaskCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517E39AF23E06B6000368DAD /* TaskCellView.swift */; };
+		517E39B223E0CBE800368DAD /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517E39B123E0CBE800368DAD /* UIView+Extensions.swift */; };
+		517E39B423E0D03200368DAD /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517E39B323E0D03200368DAD /* UILabel+Extensions.swift */; };
+		517E39B623E0D33A00368DAD /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517E39B523E0D33A00368DAD /* UIButton+Extensions.swift */; };
 		51EA416823AFBE090059796A /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA416723AFBE090059796A /* TasksView.swift */; };
-		51EA416A23AFBFB80059796A /* TaskTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA416923AFBFB80059796A /* TaskTitleLabel.swift */; };
 		51EA416C23AFE3640059796A /* TaskNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EA416B23AFE3640059796A /* TaskNavigationBar.swift */; };
 		94210C01239E162800A64061 /* ProjectsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C00239E162800A64061 /* ProjectsCoordinator.swift */; };
 		94210C03239E166900A64061 /* TasksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94210C02239E166900A64061 /* TasksCoordinator.swift */; };
@@ -78,8 +81,11 @@
 		46F87E4A23A65FCE0095264E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		46F87E4B23A65FCE0095264E /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		46F87E5823A660BD0095264E /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		517E39AF23E06B6000368DAD /* TaskCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellView.swift; sourceTree = "<group>"; };
+		517E39B123E0CBE800368DAD /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		517E39B323E0D03200368DAD /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		517E39B523E0D33A00368DAD /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		51EA416723AFBE090059796A /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
-		51EA416923AFBFB80059796A /* TaskTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskTitleLabel.swift; path = TasksManagerApp/Modules/Tasks/View/TaskTitleLabel.swift; sourceTree = SOURCE_ROOT; };
 		51EA416B23AFE3640059796A /* TaskNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskNavigationBar.swift; path = TasksManagerApp/Modules/Tasks/View/TaskNavigationBar.swift; sourceTree = SOURCE_ROOT; };
 		94210C00239E162800A64061 /* ProjectsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCoordinator.swift; sourceTree = "<group>"; };
 		94210C02239E166900A64061 /* TasksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCoordinator.swift; sourceTree = "<group>"; };
@@ -139,6 +145,9 @@
 			children = (
 				4685DDF823A606ED00B34FD0 /* UIColor+Extensions.swift */,
 				46F87E5823A660BD0095264E /* UIFont+Extensions.swift */,
+				517E39B123E0CBE800368DAD /* UIView+Extensions.swift */,
+				517E39B323E0D03200368DAD /* UILabel+Extensions.swift */,
+				517E39B523E0D33A00368DAD /* UIButton+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -403,6 +412,8 @@
 		94EEEFE6239D6EF3000D077C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				51EA416B23AFE3640059796A /* TaskNavigationBar.swift */,
+				517E39AF23E06B6000368DAD /* TaskCellView.swift */,
 				51EA416723AFBE090059796A /* TasksView.swift */,
 			);
 			path = View;
@@ -411,8 +422,6 @@
 		94EEEFE7239D6EFE000D077C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				51EA416923AFBFB80059796A /* TaskTitleLabel.swift */,
-				51EA416B23AFE3640059796A /* TaskNavigationBar.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -613,6 +622,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517E39B223E0CBE800368DAD /* UIView+Extensions.swift in Sources */,
 				9423AD1523A1E2B800E27AFA /* ProjectModel.swift in Sources */,
 				94ECB7E123AA997400E221A2 /* SaveCancelButtons.swift in Sources */,
 				4685DDF923A606ED00B34FD0 /* UIColor+Extensions.swift in Sources */,
@@ -621,6 +631,7 @@
 				942D0BB723A7BA27006AC48A /* TaskFormViewInput.swift in Sources */,
 				94210C11239E228200A64061 /* ViewsFactory.swift in Sources */,
 				94EEF006239D9591000D077C /* AnalyticCoordinator.swift in Sources */,
+				517E39B623E0D33A00368DAD /* UIButton+Extensions.swift in Sources */,
 				942D0BB323A7BA02006AC48A /* TaskFormViewOutput.swift in Sources */,
 				51EA416823AFBE090059796A /* TasksView.swift in Sources */,
 				94EEEFF6239D7D61000D077C /* MainTabBarCoordinator.swift in Sources */,
@@ -635,7 +646,6 @@
 				9423AD2623A1EB7600E27AFA /* DataBaseManagerProtocol.swift in Sources */,
 				942D0BB923A7BA3A006AC48A /* TaskFormCoordinator.swift in Sources */,
 				9423AD1E23A1E40900E27AFA /* Task+CoreDataProperties.swift in Sources */,
-				51EA416A23AFBFB80059796A /* TaskTitleLabel.swift in Sources */,
 				9423AD1C23A1E40900E27AFA /* Project+CoreDataProperties.swift in Sources */,
 				94EEEFBB239CB416000D077C /* TasksManagerApp.xcdatamodeld in Sources */,
 				94210C03239E166900A64061 /* TasksCoordinator.swift in Sources */,
@@ -648,11 +658,13 @@
 				942D0BB623A7BA27006AC48A /* TaskFormPresenter.swift in Sources */,
 				942294A923AF4DD600964320 /* BrokenRule.swift in Sources */,
 				94210C07239E201500A64061 /* AnalyticView.swift in Sources */,
+				517E39B023E06B6000368DAD /* TaskCellView.swift in Sources */,
 				51EA416C23AFE3640059796A /* TaskNavigationBar.swift in Sources */,
 				94210C13239E231600A64061 /* AnalyticViewInput.swift in Sources */,
 				94EEEFB3239CB3B6000D077C /* AppDelegate.swift in Sources */,
 				46F87E5923A660BD0095264E /* UIFont+Extensions.swift in Sources */,
 				94210C09239E205F00A64061 /* ProjectsView.swift in Sources */,
+				517E39B423E0D03200368DAD /* UILabel+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
