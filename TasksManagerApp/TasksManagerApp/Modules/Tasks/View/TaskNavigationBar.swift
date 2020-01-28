@@ -22,14 +22,20 @@ class TaskNavigationBar: UINavigationBar {
     }
     
     private func initialize(){
-        self.backgroundColor = .tmaColor
-        let navigationItem = UINavigationItem(title: "TASK - TODAY")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        
+        let navigationItem = UINavigationItem(title: "TODAY: \(dateFormatter.string(from: Date()))")
         let addBtn = UIBarButtonItem(
         barButtonSystemItem: UIBarButtonItem.SystemItem.add,
         target: nil,
         action: #selector(selectorX))
         navigationItem.rightBarButtonItem = addBtn
         self.setItems([navigationItem], animated: false)
+        self.backgroundColor = .tmaColor
     }
     
     @objc func selectorX() {
